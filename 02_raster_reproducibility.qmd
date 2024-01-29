@@ -47,7 +47,11 @@ You must put your code in a code chunk and these can be added with C+ in the top
 * warning=FALSE - warnings don't appear
 * eval=FALSE - the code in that chunk does not run.
 
-Start today with an RMarkdown or Quarto file.
+Heading levels are denoted by #
+
+e.g. # = level 1, ## level 2 and so on. In the bottom left of your code you will see an orange # which will let you navigate between your headings.
+
+Start today with an RMarkdown or Quarto file. If you select the latter you can also make use of the visual editor which will make the Quarto file look like a word processor (top left of the document). 
 
 ## Intro
 
@@ -422,6 +426,12 @@ knitr::include_graphics('prac2_images/pullexample.png')
 1. Now in RStudio click the down arrow (Pull) request. Your file should update in RStudio. 
 
 If you were to update your file on GitHub and your local one in RStudio separately you would receive an error message in RStudio when you attempted to commit.
+
+If you’d rather use terminal to control Git then you can. If you have a large project RStudio sometimes has limits on file name length (e.g. this might occur with a book, like this one). To get around this you can use the following commands:
+
+* `git add .` to stage all files
+* `git commit -m "commit comment"` to commit all the staged files
+* `git push` to push the committed files to the remote
 
 **Now take the code you have used this week and put it on GitHub and add the link to the shared spreadsheet**
 

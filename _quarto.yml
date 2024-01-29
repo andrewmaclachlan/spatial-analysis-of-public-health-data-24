@@ -9,6 +9,7 @@ book:
     - software.qmd
     - 01_geographic_data.qmd
     - 02_raster_reproducibility.qmd
+    - 03_point_patterns.qmd
     - summary.qmd
     - references.qmd
   navbar:
