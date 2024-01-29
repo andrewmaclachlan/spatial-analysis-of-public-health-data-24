@@ -1,0 +1,39 @@
+project:
+  type: book
+
+book:
+  title: "Spatial analysis of public health data"
+#  date: "24/01/2024"
+  chapters:
+    - index.qmd
+    - software.qmd
+    - 01_geographic_data.qmd
+    - 02_raster_reproducibility.qmd
+    - summary.qmd
+    - references.qmd
+  navbar:
+    logo: general_images/casa_logo.jpg
+    collapse: true
+    collapse-below: lg
+    background: light
+    #reader-mode: true
+    search: true
+    right:
+      - icon: github
+  sidebar:
+    title: "Spatial analysis of health data"
+    style: floating
+    reader-mode: true
+  repo-url: https://github.com/andrewmaclachlan/digital-urban-hyderabad
+  repo-actions: [edit, issue]  
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

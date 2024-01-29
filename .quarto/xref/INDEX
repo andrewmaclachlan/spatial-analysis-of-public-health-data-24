@@ -1,0 +1,23 @@
+{
+  "index.qmd": {
+    "index.html": "11350cdc"
+  },
+  "intro.qmd": {
+    "intro.html": "40fb6680"
+  },
+  "summary.qmd": {
+    "summary.html": "55d84b0c"
+  },
+  "references.qmd": {
+    "references.html": "0cb6f084"
+  },
+  "software.qmd": {
+    "software.html": "dc52621e"
+  },
+  "01_geographic_data.qmd": {
+    "01_geographic_data.html": "ee7afcf9"
+  },
+  "02_raster_reproducibility.qmd": {
+    "02_raster_reproducibility.html": "7eb582cb"
+  }
+}
