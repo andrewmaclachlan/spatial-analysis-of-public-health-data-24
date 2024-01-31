@@ -10,8 +10,9 @@ book:
     - 01_geographic_data.qmd
     - 02_raster_reproducibility.qmd
     - 03_point_patterns.qmd
-    - summary.qmd
-    - references.qmd
+    - 04_spatial_models.qmd
+    - 05_datasets.qmd
+    
   navbar:
     logo: general_images/casa_logo.jpg
     collapse: true

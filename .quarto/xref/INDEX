@@ -19,5 +19,14 @@
   },
   "02_raster_reproducibility.qmd": {
     "02_raster_reproducibility.html": "7eb582cb"
+  },
+  "03_point_patterns.qmd": {
+    "03_point_patterns.html": "8773c952"
+  },
+  "04_spatial_models.qmd": {
+    "04_spatial_models.html": "4a7ed40f"
+  },
+  "05_datasets.qmd": {
+    "05_datasets.html": "e494c2e3"
   }
 }

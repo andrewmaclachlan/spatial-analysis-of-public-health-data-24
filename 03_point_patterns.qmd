@@ -1,21 +1,42 @@
 # Point patterns and autocorrelation
 
-## Reading
+::: callout-note
+
+**Reading**
 
 Point patterns
 
 -   Point Pattern Analysis (Chapter 11) + Chapter 13 Spatial Autocorrelation (Chapter 13), [Intro to GIS and Spatial Analysis by Gimond (2023)](https://mgimond.github.io/Spatial/chp11_0.html)
 
--   [The Geography of London’s Recent Beer Brewing Revolution, Dennett and Page (2017)](https://discovery.ucl.ac.uk/id/eprint/1565547/1/Dennett_Accepted_Version.pdf)
-
 -   [Spatial Point Pattern Analysis and Its Application in Geographical Epidemiology, Gatrell et al. (1996)](https://www.jstor.org/stable/622936?casa_token=4DYSo5OC8DoAAAAA%3A1pOLjSzI-B1C3vzist48teaoymA1TofxCYZoJN8bIuCGn7-819JFHJIe3SfqiUTyOMMRRUBTHpT9smJab8Ne6MWo1T1MyI8g6Uz4ym0mVF6xfO1tv4Av&seq=1#metadata_info_tab_contents)
 
-# Get data
+-  [What Problem? Spatial Autocorrelation and Geographic Information Science](https://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.2009.00769.x) by Goodchild (2009).
 
-Get the data: https://datashare.ed.ac.uk/handle/10283/2501
+:::
 
-load our packages
+## Learning outcomes
 
+By the end of this practical you should be able to:
+
+1. Describe and evaluate methods for analysing spatial patterns
+1. Execute data cleaning and manipulation appropriate for analysis
+1. Determine the locations of spatial clusters using point pattern analysis methods
+1. Investigate the degree to which values at spatial points are similar (or different) to each other
+1. Interpret the meaning of spatial autocorrleation in spatial data
+
+## Introduction 
+
+Today you will learn how to begin to analyse patterns in spatial data with points and spatially continuous observations. 
+
+The questions we want to answer are:
+
+1. For any given London Ward, are Pharmacies distributed randomly or do they exhibit some kind of dispersed or clustered pattern
+
+1. Are the values (in this case the density of pharmacies) similar (or dissimilar) across the wards of London.
+
+## Data
+
+Load our packages 
 ```{r}
 library(spatstat)
 library(tidyverse)
@@ -28,7 +49,7 @@ library(spdep)
 library(RColorBrewer)
 ```
 
-Load the data
+Get the pharmacy data: https://datashare.ed.ac.uk/handle/10283/2501 and load it
 
 ```{r}
 Pharmacy <- st_read("prac3_data/PharmacyEW/PharmacyEW.shp")%>%
@@ -42,10 +63,10 @@ tm_shape(Pharmacy) +
   tm_dots(col = "blue")
 ```
 
-London LSOAs (or MSOAs or wards): https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london
+Get the London ward data and load it https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london
 
 ```{r}
-LSOAs<- st_read("prac3_data/statistical-gis-boundaries-london/statistical-gis-boundaries-london/ESRI/London_Ward_CityMerged.shp")%>%
+wards<- st_read("prac3_data/statistical-gis-boundaries-london/statistical-gis-boundaries-london/ESRI/London_Ward_CityMerged.shp")%>%
   st_transform(.,27700)
 
 ```
@@ -55,17 +76,20 @@ Check the data
 ```{r}
 
 #check with a plot
-tm_shape(LSOAs) +
+tm_shape(wards) +
   tm_polygons(col = NA)
 ```
+### Wrangle data
 
-We need to spatially subset our points within our study area...Here, the second operator is blank , , - this controls which attributes are kept, although I’d rather keep all of them and manipulate with the `tidyverse`.
+As we can see above the pharmacy data is for the whole of the UK and we are just interested in London. So, we need to spatially subset our points within our study area...
+
+Here, the second operator is blank , , - this controls which attributes are kept, although I’d rather keep all of them and manipulate with the `tidyverse`.
 
 ```{r}
-Pharmacysub <- Pharmacy[LSOAs, , op=st_within]
+Pharmacysub <- Pharmacy[wards, , op=st_within]
 
 #check with a plot
-tm_shape(LSOAs) +
+tm_shape(wards) +
   tm_polygons(col = NA, alpha=0.5)+
 tm_shape(Pharmacysub) +
   tm_dots(col="blue")
@@ -82,7 +106,7 @@ We can also just use the function which will have the indices of where they inte
 
 ```{r}
 # add sparse=false to get the complete matrix.
-intersect_indices <-st_intersects(LSOAs, Pharmacy)
+intersect_indices <-st_intersects(wards, Pharmacy)
 ```
 
 If you have used a graphic user interface GIS before, this is the same as `select by location` (e.g. [select by location in QGIS](https://docs.qgis.org/3.22/en/docs/user_manual/processing_algs/qgis/vectorselection.html#select-by-location)), and as using filter from `dplyr` is the same as `select by attribute`.
@@ -91,7 +115,7 @@ If you have used a graphic user interface GIS before, this is the same as `selec
 What is the [difference between intersects and within for points like ours?](https://gis.stackexchange.com/questions/345184/st-intersects-vs-st-within/345186#:~:text=ST_Intersects%3A%20https%3A%2F%2Fpostgis.net,of%20space%20then%20they%20intersect.&text=For%20points%2C%20there%20is%20no,do%20the%20same%20with%20lines.)
 :::
 
-# Point pattern
+## Point patterns
 
 For point pattern analysis we need a point pattern object (ppp)...within an observation window. This is specific to the [`spatstat`](https://spatstat.org/) package as we can't do this with `sf`, SpatialPolygonsDataFrames or SpatialPointsDataFrames.
 
@@ -118,7 +142,7 @@ PharmacysubSP.ppp %>%
               main="Pharmacies in London")
 ```
 
-## Quadrat analysis
+### Quadrat analysis
 
 So as you saw in the lecture, we are interesting in knowing whether the distribution of points in our study area differs from ‘complete spatial randomness’ — CSR. That’s different from a CRS! Be careful!
 
@@ -219,7 +243,7 @@ teststats <- quadrat.test(PharmacysubSP.ppp, nx = 20, ny = 20)
 
 Chi square with a p value \< 0.05 therefore some clustering...but from the plot, this was expected
 
-## Ripley K
+### Ripley K
 
 One way of getting around the limitations of quadrat analysis is to compare the observed distribution of points with the Poisson random model for a whole range of different distance radii. This is what Ripley’s K function computes. We can conduct a Ripley’s K test on our data very simply with the `spatstat` package using the `kest()` function.
 
@@ -251,7 +275,7 @@ K <- PharmacysubSP.ppp %>%
 
 This was sort of expected too due to our previous analysis - suggesting that there is clustering throughout the points.
 
-## DBSCAN
+### DBSCAN
 
 Quadrat and Ripley's K analysis are useful exploratory techniques for telling us if we have spatial clusters present in our point data, but they are not able to tell us WHERE in our area of interest the clusters are occurring. To discover this we need to use alternative techniques. One popular technique for discovering clusters in space (be this physical space or variable space) is DBSCAN. For the complete overview of the DBSCAN algorithm, read the original paper by [Ester et al. (1996)](http://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf) 
 or consult the [wikipedia page](https://en.wikipedia.org/wiki/DBSCAN)
@@ -290,7 +314,7 @@ db <- Pharmacysub_coords %>%
 
 #now plot the results
 plot(db, Pharmacysub_coords, main = "DBSCAN Output", frame = F)
-plot(LondonWards$geometry, add=T)
+plot(wards$geometry, add=T)
 ```
 Our new db object contains lots of info including the cluster each set of point coordinates belongs to, whether the point is a seed point or a border point etc. We can get a summary by just calling the object. We can now add this cluster membership info back into our dataframe
 
@@ -306,7 +330,7 @@ Now create a `ggplot2` object from our data
 Pharmacysub_coordsgt0 <- Pharmacysub_coords %>%
   filter(dbcluster>0)
 
-dbplot <- ggplot(data=LondonWards)+
+dbplot <- ggplot(data=wards)+
   geom_sf()+
   geom_point(data=Pharmacysub_coordsgt0, 
                  aes(X,Y, colour=dbcluster, fill=dbcluster))
@@ -318,9 +342,12 @@ dbplot + theme_bw() + coord_sf()
 
 Now, this identifies where we have clustering based on our criteria but it doesn't show where we have similar densities of pharmacies.
 
-# Spatial Autocorrelation
+## Spatial Autocorrelation
 
-In this section we are going to explore patterns of spatially referenced continuous observations using various measures of spatial autocorrelation. Spatial autocorrelation is a measure of similarity between nearby data. We need to add all the points to the London LSOA data then compute a density per LSOA...we could also use population here too! or some other data that can give us meaningful comparisons for our variable of interest.
+In this section we are going to explore patterns of spatially referenced continuous observations using various measures of spatial autocorrelation. Spatial autocorrelation is a measure of similarity between nearby data. We need to add all the points to the London wards  then compute a density per ward could also use population here too! or some other data that can give us meaningful comparisons for our variable of interest.
+
+
+### Wrangle data 
 
 To do so we need to use a spatial join! 
 
@@ -330,16 +357,16 @@ The output will be a massive dataset where each pharmacy will be a new row and w
 
 
 ```{r}
-example<-st_intersects(LSOAs, Pharmacysub)
+example<-st_intersects(wards, Pharmacysub)
 
 example
 ```
-Here the polygon with the ID of 7 Chessington North and Hook has two plaques within it...we can check this with `st_join` (or using QGIS by opening the data)...we have three plaques.
+Here the polygon with the ID of 7 Chessington North and Hook has two pharmacies within it...we can check this with `st_join` (or using QGIS by opening the data).
 
 But note the ID column added is different to the ID of the data...open Pharmacysub from the environment window and you will see the IDs that were returned in `st_intersects()`. The new IDs above take the data and apply 1 to n, where n is the end of the data. So if we subset our pharmacies on row 60 and 66 it will match our result here.
 
 ```{r}
-check_example <- LSOAs%>%
+check_example <- wards%>%
   st_join(Pharmacysub)%>%
   filter(GSS_CODE=="E05000404")
 
@@ -350,7 +377,7 @@ check_example
 Now we just take the length of each list per polygon and add this as new column...
 
 ```{r}
-points_sf_joined <- LSOAs%>%
+points_sf_joined <- wards%>%
   mutate(n = lengths(st_intersects(., Pharmacysub)))%>%
   janitor::clean_names()%>%
   #calculate area
@@ -391,7 +418,7 @@ tm_shape(coordsW) +
   
 ```
 
-## Weight matrix
+### Weight matrix
 
 Now we need to generate a spatial weights matrix (remember from the lecture). We’ll start with a simple binary matrix of queen’s case neighbours (otherwise known as Contiguity edges corners). This method means that polygons with a shared edge or a corner will be included in computations for the target polygon…A spatial weight matrix represents the spatial element of our data, this means we are trying to conceptualize and model how parts of the data are linked (or not linked) to each other spatially, using rules that we will set.
 
@@ -412,7 +439,7 @@ Have a look at the summary of neighbours - average is 5.88
 summary(LWard_nb)
 ```
 
-plot them - we can't use tamp as it isn't class of sf, starts, spatial raster not spatraster...
+plot them - we can't use `tmap` as it isn't class of sf, starts, spatial raster not spatraster...
 
 ```{r}
 plot(LWard_nb, st_geometry(coordsW), col="red")
@@ -441,7 +468,7 @@ I have used row...based on the lecture what should the value of the weights sum 
 sum(Lward.lw)
 ```
 
-## Moran's I
+### Moran's I
 
 Moran’s I requires a spatial weight list type object as opposed to matrix, this is simply...
 
@@ -460,7 +487,7 @@ I_LWard_Global_Density <- points_sf_joined %>%
   moran.test(., Lward.lw, zero.policy = TRUE)
 ```
 
-## Geary’s C
+### Geary’s C
 
 Geary’s C - tells us whether similar values or dissimilar values are clustering - Geary’s C falls between 0 and 2; 1 means no spatial autocorrelation, \<1 - positive spatial autocorrelation or similar values clustering, \>1 - negative spatial autocorreation or dissimilar values clustering)
 
@@ -472,7 +499,7 @@ C_LWard_Global_Density <-
   geary.test(., Lward.lw, zero.policy = TRUE)
 ```
 
-## Getis Ord General G
+### Getis Ord General G
 
 Getis Ord General G…? This tells us whether high or low values are clustering. If G \> Expected = High values clustering; if G \< expected = low values clustering
 
@@ -486,9 +513,9 @@ G_LWard_Global_Density <-
 
 Based on the results write down what you can conclude here....
 
-# Local Indicies of Spatial Autocorrelation
+## Local Indicies of Spatial Autocorrelation
 
-## Moran's I
+### Moran's I
 
 We can now also calculate local versions of the Moran's I statistic (for each Ward) and a Getis Ord \(G_{i}^{*}\) statistic to see *where* we have hot-spots...
 
@@ -573,7 +600,7 @@ tm_shape(points_sf_joined) +
         title="Local Moran's I Z-score")
 ```
 
-## Getis Ord (G\_{i}\^{\*})
+### Getis Ord (G\_{i}\^{\*})
 
 What about the Getis Ord \(G_{i}^{*}\) statistic for hot and cold spots...
 
@@ -601,7 +628,6 @@ The same z-score criteria then applies as before..
 This summary from L3 Harris nicely summaries the Getis Ord \(G_{i}^{*}\) output...
 
 > The result of Getis Ord \(G_{i}^{*}\) analysis is an array of Z-scores, one for each pixel [or polygon], which is the number of standard deviations that the pixel [or polygon] and its neighbors are from the global mean. High Z-scores indicate more intense clustering of high pixel values, indicating hot spots. Low Z-scores indicate more intense clustering of low values, indicating cold spots. Individual pixels with high or low values by themselves might be interesting but not necessarily significant.
-
 
 ```{r}
 Gi_LWard_Local_Density <- points_sf_joined %>%
@@ -652,7 +678,7 @@ When you see Moran's I out in the wild you will come across maps with:
 -   low values among high values (LH)
 -   high values among low values (HL)
 
-Here, we use the values we have, of density and Moran's I, compared to the mean of density and Moran's I (termed centering). Where the
+Here, we use the values we have, of density and Moran's I, compared to the mean of density and Moran's I (termed centering). Where the:
 
 -   value of density is greater than 0 and the value of Moran's I is greater than 0 then high values (of density) are surrounded by other high values (from Moran's I)= HH
 
@@ -701,7 +727,7 @@ This might seem somewhat confusing as if we look in the South East we have low v
 
 So here we have a high Moran's I as the values around it are similar (probably all low) but a low Getis Ord as the values within the local area are low relative to the global average.
 
-# Consider what this all means
+### Consider what this all means
 
 -   Do you think Pharmacies take into account the ward they are in when they open?
 -   Do you think people only go to pharmacies within their ward?
@@ -718,7 +744,7 @@ So here we have a high Moran's I as the values around it are similar (probably a
     -   Decide what to plot - does dispersion of pharmacies occur in the same spatial units as clustering of deaths considered preventable? This could simply be two maps and a table.
 -   Should it be a requirement to have access...well if we consult the "[2022 Pharmacy Access Scheme: guidance](https://www.gov.uk/government/publications/community-pharmacy-contractual-framework-2019-to-2024/2021-to-2022-pharmacy-access-scheme-guidance)" then yes it appears so but..."Pharmacies in areas with dense provision of pharmacies remain excluded from the scheme"
 
-# Extensions
+### Extensions
 
 -   The use of OPTICS
 -   We have spatial autocorrelation now can we try and model local differences in density of pharmacies - i.e. what factors might (or might not) explain the difference here --- https://andrewmaclachlan.github.io/CASA0005repo/explaining-spatial-patterns.html.
