@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial analysis of public health data - 2&nbsp; Raster and Reproducibility</title>
+<title>Spatial analysis of public health data - 2&nbsp; Raster and reproducibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_raster_reproducibility.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and Reproducibility</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_raster_reproducibility.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and reproducibility</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_raster_reproducibility.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and Reproducibility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and reproducibility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -206,29 +206,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes"><span class="header-section-number">2.1</span> Learning outcomes</a></li>
   <li><a href="#rmarkdown-quarto" id="toc-rmarkdown-quarto" class="nav-link" data-scroll-target="#rmarkdown-quarto"><span class="header-section-number">2.2</span> RMarkdown / Quarto</a></li>
   <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro"><span class="header-section-number">2.3</span> Intro</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2.4</span> Data</a></li>
-  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading"><span class="header-section-number">2.5</span> Data loading</a></li>
-  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection"><span class="header-section-number">2.6</span> Projection</a>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2.4</span> Data</a>
   <ul class="collapse">
-  <li><a href="#wgs84" id="toc-wgs84" class="nav-link" data-scroll-target="#wgs84"><span class="header-section-number">2.6.1</span> WGS84</a></li>
-  <li><a href="#proj4" id="toc-proj4" class="nav-link" data-scroll-target="#proj4"><span class="header-section-number">2.6.2</span> Proj4</a></li>
-  <li><a href="#epsg" id="toc-epsg" class="nav-link" data-scroll-target="#epsg"><span class="header-section-number">2.6.3</span> EPSG</a></li>
+  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading"><span class="header-section-number">2.4.1</span> Data loading</a></li>
+  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection"><span class="header-section-number">2.4.2</span> Projection</a></li>
+  <li><a href="#reprojecting" id="toc-reprojecting" class="nav-link" data-scroll-target="#reprojecting"><span class="header-section-number">2.4.3</span> Reprojecting</a></li>
+  <li><a href="#data-joining" id="toc-data-joining" class="nav-link" data-scroll-target="#data-joining"><span class="header-section-number">2.4.4</span> Data joining</a></li>
+  <li><a href="#malaria-per-lga" id="toc-malaria-per-lga" class="nav-link" data-scroll-target="#malaria-per-lga"><span class="header-section-number">2.4.5</span> Malaria per LGA</a></li>
+  <li><a href="#final-dataset" id="toc-final-dataset" class="nav-link" data-scroll-target="#final-dataset"><span class="header-section-number">2.4.6</span> Final dataset</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations"><span class="header-section-number">2.4.7</span> Calculations</a></li>
   </ul></li>
-  <li><a href="#reprojecting" id="toc-reprojecting" class="nav-link" data-scroll-target="#reprojecting"><span class="header-section-number">2.7</span> Reprojecting</a></li>
-  <li><a href="#data-joining" id="toc-data-joining" class="nav-link" data-scroll-target="#data-joining"><span class="header-section-number">2.8</span> Data joining</a></li>
-  <li><a href="#malaria-per-lga" id="toc-malaria-per-lga" class="nav-link" data-scroll-target="#malaria-per-lga"><span class="header-section-number">2.9</span> Malaria per LGA</a></li>
-  <li><a href="#final-dataset" id="toc-final-dataset" class="nav-link" data-scroll-target="#final-dataset"><span class="header-section-number">2.10</span> Final dataset</a></li>
-  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations"><span class="header-section-number">2.11</span> Calculations</a></li>
-  <li><a href="#git-github-rmarkdown" id="toc-git-github-rmarkdown" class="nav-link" data-scroll-target="#git-github-rmarkdown"><span class="header-section-number">2.12</span> Git, GitHub, RMarkdown</a>
+  <li><a href="#git-github-rmarkdown" id="toc-git-github-rmarkdown" class="nav-link" data-scroll-target="#git-github-rmarkdown"><span class="header-section-number">2.5</span> Git, GitHub, RMarkdown</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">2.12.1</span> Setup</a></li>
-  <li><a href="#using-rstudio-with-git" id="toc-using-rstudio-with-git" class="nav-link" data-scroll-target="#using-rstudio-with-git"><span class="header-section-number">2.12.2</span> Using RStudio with Git</a></li>
-  <li><a href="#way-1---starting-fresh" id="toc-way-1---starting-fresh" class="nav-link" data-scroll-target="#way-1---starting-fresh"><span class="header-section-number">2.12.3</span> Way 1 - starting fresh</a></li>
-  <li><a href="#way-2---if-have-an-existing-project" id="toc-way-2---if-have-an-existing-project" class="nav-link" data-scroll-target="#way-2---if-have-an-existing-project"><span class="header-section-number">2.12.4</span> Way 2 - If have an existing project</a></li>
-  <li><a href="#commiting-to-git" id="toc-commiting-to-git" class="nav-link" data-scroll-target="#commiting-to-git"><span class="header-section-number">2.12.5</span> Commiting to Git</a></li>
-  <li><a href="#push-to-github" id="toc-push-to-github" class="nav-link" data-scroll-target="#push-to-github"><span class="header-section-number">2.12.6</span> Push to Github</a></li>
-  <li><a href="#pull-from-github" id="toc-pull-from-github" class="nav-link" data-scroll-target="#pull-from-github"><span class="header-section-number">2.12.7</span> Pull from GitHub</a></li>
-  <li><a href="#forking" id="toc-forking" class="nav-link" data-scroll-target="#forking"><span class="header-section-number">2.12.8</span> Forking</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">2.5.1</span> Setup</a></li>
+  <li><a href="#using-rstudio-with-git" id="toc-using-rstudio-with-git" class="nav-link" data-scroll-target="#using-rstudio-with-git"><span class="header-section-number">2.5.2</span> Using RStudio with Git</a></li>
+  <li><a href="#way-1---starting-fresh" id="toc-way-1---starting-fresh" class="nav-link" data-scroll-target="#way-1---starting-fresh"><span class="header-section-number">2.5.3</span> Way 1 - starting fresh</a></li>
+  <li><a href="#way-2---if-have-an-existing-project" id="toc-way-2---if-have-an-existing-project" class="nav-link" data-scroll-target="#way-2---if-have-an-existing-project"><span class="header-section-number">2.5.4</span> Way 2 - If have an existing project</a></li>
+  <li><a href="#commiting-to-git" id="toc-commiting-to-git" class="nav-link" data-scroll-target="#commiting-to-git"><span class="header-section-number">2.5.5</span> Commiting to Git</a></li>
+  <li><a href="#push-to-github" id="toc-push-to-github" class="nav-link" data-scroll-target="#push-to-github"><span class="header-section-number">2.5.6</span> Push to Github</a></li>
+  <li><a href="#pull-from-github" id="toc-pull-from-github" class="nav-link" data-scroll-target="#pull-from-github"><span class="header-section-number">2.5.7</span> Pull from GitHub</a></li>
+  <li><a href="#forking" id="toc-forking" class="nav-link" data-scroll-target="#forking"><span class="header-section-number">2.5.8</span> Forking</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/andrewmaclachlan/digital-urban-hyderabad/edit/main/02_raster_reproducibility.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/andrewmaclachlan/digital-urban-hyderabad/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -238,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and Reproducibility</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Raster and reproducibility</span></h1>
 </div>
 
 
@@ -306,13 +303,13 @@ Important
 <p>In RMarkdown you will see a “knit” option at the bar just above your code. In Quarto this will be “render”. These will run all code in the entire document and allow us to export our code to other formats - such as html or pdf.</p>
 <p>You must put your code in a code chunk and these can be added with C+ in the top tool bar. We can control code chunks in different ways….</p>
 <ul>
-<li>echo=FALSE - code does not appear in the final rendered document but the output does</li>
-<li>message=FALSE - messages don’t appear</li>
-<li>warning=FALSE - warnings don’t appear</li>
-<li>eval=FALSE - the code in that chunk does not run.</li>
+<li><code>echo=FALSE</code> - code does not appear in the final rendered document but the output does</li>
+<li><code>message=FALSE</code> - messages don’t appear</li>
+<li><code>warning=FALSE</code> - warnings don’t appear</li>
+<li><code>eval=FALSE</code> - the code in that chunk does not run.</li>
 </ul>
-<p>Heading levels are denoted by #</p>
-<p>e.g.&nbsp;# = level 1, ## level 2 and so on. In the bottom left of your code you will see an orange # which will let you navigate between your headings.</p>
+<p>Heading levels are denoted by <code>#</code></p>
+<p>e.g.&nbsp;<code>#</code> = level 1, <code>##</code> level 2 and so on. In the bottom left of your code you will see an orange <code>#</code> which will let you navigate between your headings.</p>
 <p>Start today with an RMarkdown or Quarto file. If you select the latter you can also make use of the visual editor which will make the Quarto file look like a word processor (top left of the document).</p>
 </section>
 <section id="intro" class="level2" data-number="2.3">
@@ -328,79 +325,25 @@ Important
 <li><a href="https://data.malariaatlas.org/maps?layers=Malaria:202206_Global_Pf_Mortality_Rate">count of deaths from Plasmodium falciparum (malaria)</a>. I have downloaded the whole world, but you can also select just the country.</li>
 <li><a href="https://data.humdata.org/dataset/cod-ps-nga?">2020 population data</a>, in order to normalise our data.</li>
 </ul>
-</section>
-<section id="data-loading" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="data-loading"><span class="header-section-number">2.5</span> Data loading</h2>
+<section id="data-loading" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="data-loading"><span class="header-section-number">2.4.1</span> Data loading</h3>
 <p>Load in the population data. We will need to join this data to a spatial layer later on, so check it for a unique identifier.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.0     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'janitor'
-
-The following objects are masked from 'package:stats':
-
-    chisq.test, fisher.test</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"prac2_data/nga_admpop_adm2_2020.csv"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-Rows: 773 Columns: 78
-── Column specification
-──────────────────────────────────────────────────────── Delimiter: "," chr
-(6): ADM0_NAME, ADM0_PCODE, ADM1_NAME, ADM1_PCODE, ADM2_NAME, ADM2_PCODE dbl
-(54): F_TL, M_TL, T_TL, F_00_04, F_05_09, F_10_14, F_15_19, F_20_24, F_2... lgl
-(18): ...61, ...62, ...63, ...64, ...65, ...66, ...67, ...68, ...69, ......
-ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
-Specify the column types or set `show_col_types = FALSE` to quiet this message.
-• `` -&gt; `...61`
-• `` -&gt; `...62`
-• `` -&gt; `...63`
-• `` -&gt; `...64`
-• `` -&gt; `...65`
-• `` -&gt; `...66`
-• `` -&gt; `...67`
-• `` -&gt; `...68`
-• `` -&gt; `...69`
-• `` -&gt; `...70`
-• `` -&gt; `...71`
-• `` -&gt; `...72`
-• `` -&gt; `...73`
-• `` -&gt; `...74`
-• `` -&gt; `...75`
-• `` -&gt; `...76`
-• `` -&gt; `...77`
-• `` -&gt; `...78`</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the type of column</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Datatypelist <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(class) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">"All_variables"</span>, </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">"Variable_class"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>Datatypelist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"prac2_data/nga_admpop_adm2_2020.csv"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>(.)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check the type of column</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Datatypelist <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">"All_variables"</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">"Variable_class"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Datatypelist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 78 × 2
    All_variables Variable_class
@@ -419,31 +362,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 </div>
 <p>Raster packages in R have and are still evolving rapidly. In 2023 some key packages will retired like <code>maptools</code>, <code>rgdal</code> and <code>rgeos</code> as their maintainer, Roger Bivand retired. The old <code>raster</code> used <code>sp</code> objects (the precursor to <code>sf</code>) for vector data and also the <code>rgdal</code> package - the Geospatial Data Abstraction Library (GDAL) for reading, writing and converting between spatial formats.</p>
-<p>The <code>terra</code> package (2020) is somewhat mixed with raster, however the retiring packages are only needed by <code>raster</code>, with the <code>terra</code> package replacing <code>raster</code>. <code>Terra</code> is much faster than raster as datasets that can’t be loaded into RAM are stored on disc and when loaded doesn’t read the values. Then when computations occur the do so in chunks. <code>Terra</code> is very well documented and the functions are very similar to <code>raster</code> - https://rspatial.org/terra/pkg/index.html</p>
+<p>The <code>terra</code> package (2020) is somewhat similar to <code>raster</code>, however the retiring packages are only needed by <code>raster</code>, with the <code>terra</code> package replacing <code>raster</code>. <code>Terra</code> is much faster than raster as datasets that can’t be loaded into RAM are stored on disc and when loaded doesn’t read the values. Then when computations occur the do so in chunks. <code>terra</code> is very well documented and the functions are similar to <code>raster</code> - https://rspatial.org/terra/pkg/index.html</p>
 <p>Load in the raster layer for 2020</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>terra 1.6.17</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'terra'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:janitor':
-
-    crosstab</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:tidyr':
-
-    extract</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>malaria <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"prac2_data/202206_Global_Pf_Mortality_Count_2000/202206_Global_Pf_Mortality_Count_2020.tif"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check the raster info</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>malaria</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>malaria <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"prac2_data/202206_Global_Pf_Mortality_Count_2000/202206_Global_Pf_Mortality_Count_2020.tif"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check the raster info</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>malaria</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class       : SpatRaster 
 dimensions  : 3480, 8640, 1  (nrow, ncol, nlyr)
@@ -462,11 +389,9 @@ max value   :                              481.9917 </code></pre>
 </blockquote>
 <p>Despite this let’s calculate which local government area has the most cases…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>LGA <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"prac2_data/nga_adm_osgof_20190417/nga_admbnda_adm2_osgof_20190417.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>LGA <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"prac2_data/nga_adm_osgof_20190417/nga_admbnda_adm2_osgof_20190417.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `nga_admbnda_adm2_osgof_20190417' from data source 
   `C:\Users\Andy\OneDrive - University College London\Teaching\Guest\Oxford_24\Spatial analysis of public health data\prac2_data\nga_adm_osgof_20190417\nga_admbnda_adm2_osgof_20190417.shp' 
@@ -480,8 +405,8 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 <p>But before we do…</p>
 </section>
-<section id="projection" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="projection"><span class="header-section-number">2.6</span> Projection</h2>
+<section id="projection" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="projection"><span class="header-section-number">2.4.2</span> Projection</h3>
 <p>Whilst yesterday we saw the theory of coordinate reference systems we didn’t actually change any!</p>
 <p>The coordinates are stored in the geometry column of your sf object contain the information to enable points, lines or polygons to be drawn on the screen. Rasters are similar but contain the points of the bottom left pixel.</p>
 <p>You can see in our cases we have:</p>
@@ -490,8 +415,8 @@ Geodetic CRS:  WGS 84</code></pre>
 <li><p>a multipolygon - every point within the polygon will have coordinates that are in a certain reference system, here Geodetic CRS: WGS 84. The geodetic means geographic, if it was a projected coordinate reference system it would say projected CRS</p></li>
 </ul>
 <p>We need some more information on projections before we can progress….</p>
-<section id="wgs84" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="wgs84"><span class="header-section-number">2.6.1</span> WGS84</h3>
+<section id="wgs84" class="level4" data-number="2.4.2.1">
+<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="wgs84"><span class="header-section-number">2.4.2.1</span> WGS84</h4>
 <p>The World Geodetic System 84 (WGS84 - last revised in 1984) is one of the most common global projection systems, used in nearly all GPS devices. However there are many versions of WGS84, some geographic and some projected coordinate reference systems.</p>
 <p><strong>3D globe</strong></p>
 <ul>
@@ -521,12 +446,12 @@ Geodetic CRS:  WGS 84</code></pre>
 <p>An example of another Geographic coordinate reference systems is the North American 1983 Datum (NAD83) that uses a different ellipsoid (longer by 0.21mm compared to WGS84), it also just has reference points on the North America plate (that moves 1-2cm a year), WGS84 has them all over the world.</p>
 <p>This same logic applies for projected coordinate references systems that could be different, as they use a different origin and the projected coordinate reference system still contains the geographic one, the projected part tells the computer how to draw the shape.</p>
 </section>
-<section id="proj4" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="proj4"><span class="header-section-number">2.6.2</span> Proj4</h3>
+<section id="proj4" class="level4" data-number="2.4.2.2">
+<h4 data-number="2.4.2.2" class="anchored" data-anchor-id="proj4"><span class="header-section-number">2.4.2.2</span> Proj4</h4>
 <p>Whilst we were able to identify the CRS of our layer using <code>print</code> another alternative is to find the <code>proj4</code> string. A <code>proj4</code> string is meant to be a compact way of identifying a coordinate reference system. Let’s extract ours…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(LGA)<span class="sc">$</span>proj4string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(LGA)<span class="sc">$</span>proj4string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "+proj=longlat +datum=WGS84 +no_defs"</code></pre>
 </div>
@@ -536,27 +461,37 @@ Geodetic CRS:  WGS 84</code></pre>
 </blockquote>
 <p>The proj4-string basically tells the computer where on the earth to locate the coordinates that make up the geometries in your file and what distortions to apply (i.e.&nbsp;if to flatten it out completely etc.) It’s composed of a list of parameters separated by a <code>+</code>. Here are projection <code>proj</code> uses latitude and longitude (so it’s a geographic not projected CRS). The <code>datum</code> is WGS84 that uses Earth’s centre mass as the coordinate origin (0,0).</p>
 <p>The <a href="https://mgimond.github.io/Spatial/coordinate-systems-in-r.html#understanding-the-proj4-coordinate-syntax">Coordiante systems in R chapter by Gimond (2019)</a> provides much more information on Proj4. However, i’d advise trying to use EPSG codes, which we come onto next.</p>
-<ol type="1">
-<li>Sometimes you can download data from the web and it doesn’t have a CRS. If any boundary data you download does not have a coordinate reference system attached to it (NA is displayed in the coord. ref section), this is not a huge problem — it can be added afterwards by adding the proj4string to the file or just assigning an EPSG code.</li>
-</ol>
-<p>To find the proj4-strings for a whole range of different geographic projections, use the search facility at http://spatialreference.org/ or http://epsg.io/.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sometimes you can download data from the web and it doesn’t have a CRS. If any boundary data you download does not have a coordinate reference system attached to it (NA is displayed in the coord. ref section), this is not a huge problem — it can be added afterwards by adding the proj4string to the file or just assigning an EPSG code.</p>
+</div>
+</div>
+<p>To find the proj4-strings for a whole range of different geographic projections, use the search facility at [spatial reference] (http://spatialreference.org/) or [epsg.io] (http://epsg.io/.)</p>
 </section>
-<section id="epsg" class="level3" data-number="2.6.3">
-<h3 data-number="2.6.3" class="anchored" data-anchor-id="epsg"><span class="header-section-number">2.6.3</span> EPSG</h3>
+<section id="epsg" class="level4" data-number="2.4.2.3">
+<h4 data-number="2.4.2.3" class="anchored" data-anchor-id="epsg"><span class="header-section-number">2.4.2.3</span> EPSG</h4>
 <p>Now, if you can store a whole proj4-string in your mind, you must be some kind of savant (why are you doing this course? you could make your fortune as a card-counting poker player or something!). The rest of us need something a little bit more easy to remember and for coordinate reference systems, the saviour is the European Petroleum Survey Group (EPSG) — (naturally!). Now managed and maintained by the <a href="http://www.epsg.org/">International Association of Oil and Gas producers</a> — EPSG codes are short numbers represent all coordinate reference systems in the world and link directly to proj4 strings. We saw these last week in the [Making some maps] section.</p>
 <p>The EPSG code for the WGS84 World Geodetic System (usually the default CRS for most spatial data) is 4326 — http://epsg.io/4326</p>
 <ol type="1">
 <li>If our data didn’t have a spatial reference system, we could have just set it using <code>st_set_crs()</code></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>LGA <span class="ot">&lt;-</span> LGA <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(., <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>LGA <span class="ot">&lt;-</span> LGA <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_set_crs</span>(., <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Normally</strong> if a layer has a missing CRS, it’s WGS84. But check for any metadata that might list it.</p>
 </section>
 </section>
-<section id="reprojecting" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="reprojecting"><span class="header-section-number">2.7</span> Reprojecting</h2>
+<section id="reprojecting" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="reprojecting"><span class="header-section-number">2.4.3</span> Reprojecting</h3>
 <p>Reprojecting your data is something that you might have to (or want to) do, on occasion. Why? Well, one example might be if you want to measure the distance of a line object, or the distance between two polygons. This can be done far more easily in a projected coordinate system (where the units are measured in metres) than it can a geographic coordinate system such as WGS84 (where the units are degrees). It is good practice to select a local coordiante reference system to undertake your analysis in.</p>
 <p><strong>However</strong> for generating online maps in packages like <code>leaflet</code>, your data will need to be in WGS84, rather than a projected (flat) reference system .</p>
 <p>In our case the data has been provided in WGS84. Searching <a href="https://epsg.io/?q=Nigeria">epsg.io</a> gives us a variety of options - we are looking for a CRS in meters.</p>
@@ -568,843 +503,76 @@ Geodetic CRS:  WGS 84</code></pre>
 <li><p>Masking acts like a cookie cutter.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>malaria_nga <span class="ot">&lt;-</span> malaria <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">crop</span>(., LGA)<span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">mask</span>(., LGA)<span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">project</span>(., <span class="st">"EPSG:26393"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>malaria_nga <span class="ot">&lt;-</span> malaria <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">crop</span>(., LGA)<span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">mask</span>(., LGA)<span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">project</span>(., <span class="st">"EPSG:26393"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s re-project our vector data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>LGA_nga <span class="ot">&lt;-</span> LGA <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(., <span class="dv">26393</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>LGA_nga <span class="ot">&lt;-</span> LGA <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(., <span class="dv">26393</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-joining" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="data-joining"><span class="header-section-number">2.8</span> Data joining</h2>
+<section id="data-joining" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="data-joining"><span class="header-section-number">2.4.4</span> Data joining</h3>
 <p>Join our population data to our vector data using the unique identifier in each of the datasets then select the columns we want to keep for this analysis…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> LGA_nga <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            population,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"adm2_pcode"</span> <span class="ot">=</span> <span class="st">"adm2_pcode"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(adm2_pcode, adm2_en, t_tl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> LGA_nga <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>            population,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"adm2_pcode"</span> <span class="ot">=</span> <span class="st">"adm2_pcode"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(adm2_pcode, adm2_en, t_tl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="malaria-per-lga" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="malaria-per-lga"><span class="header-section-number">2.9</span> Malaria per LGA</h2>
+<section id="malaria-per-lga" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="malaria-per-lga"><span class="header-section-number">2.4.5</span> Malaria per LGA</h3>
 <p>To extract the raster in each polygon <code>terra::extract()</code> will identify the cells that have a centroid (central point) within each polygon. I have used the argument <code>fun=sum()</code> which will then sum all of the cells within each polygon. <strong>Note</strong> the output length is 774 - the same as our sf polygon data. If we left this argument out it would return all of the cells and the ID’s would be replicated (e.g.&nbsp;the first four cells have the ID of 1 and are within the first polygon). The length of the data frame increases to around 43,000. We could still work out the sum per LGA by using <code>group_by()</code> and <code>summarise()</code> like we say yesterday.</p>
-<p>This process will return a data frame where the ID reflects the row of the sf object (e.g.&nbsp;ID 1 is the top row of the sf polygon data). For more information of extracting raster data see: https://tmieno2.github.io/R-as-GIS-for-Economists/extracting-values-from-raster-layers-for-vector-data.html</p>
+<p>This process will return a data frame where the ID reflects the row of the sf object (e.g.&nbsp;ID 1 is the top row of the sf polygon data). For more information of extracting raster data see the book <a href="https://tmieno2.github.io/R-as-GIS-for-Economists/extracting-values-from-raster-layers-for-vector-data.html">the section on rasters in R as GIS for Economists</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>LGA_pop_extract <span class="ot">&lt;-</span> malaria_nga <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">extract</span>(., joined_data, <span class="at">fun=</span>sum)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>LGA_pop_extract</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>LGA_pop_extract <span class="ot">&lt;-</span> malaria_nga <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">extract</span>(., joined_data, <span class="at">fun=</span>sum)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(LGA_pop_extract)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     ID X202206_Global_Pf_Mortality_Count_2020
-1     1                              81.277229
-2     2                             175.569527
-3     3                              77.099926
-4     4                             459.198448
-5     5                              72.545191
-6     6                             200.915854
-7     7                             820.837324
-8     8                             171.463963
-9     9                             102.928163
-10   10                             825.630615
-11   11                             394.654127
-12   12                            2321.565441
-13   13                             132.196976
-14   14                             446.152905
-15   15                             956.979896
-16   16                             290.444331
-17   17                             226.431078
-18   18                             231.872137
-19   19                             381.323390
-20   20                             144.002135
-21   21                             211.623055
-22   22                             214.422531
-23   23                             677.578377
-24   24                                    NaN
-25   25                             428.386162
-26   26                              68.822559
-27   27                             128.844365
-28   28                             338.164091
-29   29                             229.753050
-30   30                             191.077412
-31   31                              92.343609
-32   32                             512.455879
-33   33                             482.218170
-34   34                             118.799303
-35   35                             354.617079
-36   36                             454.971613
-37   37                             363.327646
-38   38                              95.296338
-39   39                             114.658797
-40   40                              40.389406
-41   41                             157.502551
-42   42                             128.276656
-43   43                             349.537813
-44   44                             206.612995
-45   45                             311.914862
-46   46                             196.762578
-47   47                             483.940969
-48   48                              44.685845
-49   49                            1165.837719
-50   50                             524.672569
-51   51                             346.384310
-52   52                             162.831162
-53   53                             538.635058
-54   54                             607.126980
-55   55                             315.476232
-56   56                             438.658938
-57   57                             128.902108
-58   58                             174.876990
-59   59                             187.974059
-60   60                             352.410950
-61   61                             178.238162
-62   62                             215.401184
-63   63                             239.884507
-64   64                             192.683237
-65   65                             171.469370
-66   66                             603.589075
-67   67                             167.875973
-68   68                             179.556081
-69   69                             187.187938
-70   70                             243.674301
-71   71                             349.325185
-72   72                             324.255466
-73   73                             462.169214
-74   74                              78.792662
-75   75                             145.100417
-76   76                             198.289261
-77   77                             432.811171
-78   78                             162.735638
-79   79                             181.915554
-80   80                             388.723775
-81   81                             309.477064
-82   82                             499.574890
-83   83                             130.396102
-84   84                             458.127232
-85   85                             561.029335
-86   86                               3.440239
-87   87                             419.316846
-88   88                             113.110719
-89   89                             368.466458
-90   90                             428.128950
-91   91                             311.041999
-92   92                             638.509943
-93   93                             664.912186
-94   94                             153.587903
-95   95                             674.718880
-96   96                             254.284164
-97   97                             307.838974
-98   98                             525.830071
-99   99                             367.816299
-100 100                             231.410019
-101 101                             529.557395
-102 102                              95.838760
-103 103                             755.103849
-104 104                             120.001934
-105 105                             793.081831
-106 106                              92.906223
-107 107                             209.259087
-108 108                             222.921044
-109 109                             247.790136
-110 110                             219.485661
-111 111                             424.519493
-112 112                             822.715179
-113 113                             166.546878
-114 114                             167.379667
-115 115                             413.287554
-116 116                             224.010332
-117 117                             238.777819
-118 118                             280.432242
-119 119                             739.757344
-120 120                              53.079895
-121 121                             102.730362
-122 122                             199.391440
-123 123                                    NaN
-124 124                             146.335055
-125 125                             171.217270
-126 126                                    NaN
-127 127                             141.104690
-128 128                             245.377048
-129 129                             324.330322
-130 130                             410.063941
-131 131                             140.577210
-132 132                             104.138044
-133 133                             210.720802
-134 134                             338.186646
-135 135                             683.898751
-136 136                              23.207888
-137 137                              77.344852
-138 138                              93.307850
-139 139                             218.581867
-140 140                             137.306820
-141 141                             928.164802
-142 142                             176.184509
-143 143                              65.700156
-144 144                             376.512259
-145 145                             537.650269
-146 146                             308.994211
-147 147                             306.976735
-148 148                             239.635416
-149 149                             473.358952
-150 150                             322.278965
-151 151                             285.184897
-152 152                             564.523515
-153 153                             161.322343
-154 154                              90.484735
-155 155                             548.067059
-156 156                             780.522011
-157 157                             431.854704
-158 158                             278.295074
-159 159                             164.574609
-160 160                             108.548505
-161 161                             325.399070
-162 162                             327.679993
-163 163                             206.287800
-164 164                             231.234637
-165 165                             102.141041
-166 166                             340.087457
-167 167                             162.838528
-168 168                             317.955412
-169 169                              49.779457
-170 170                             180.447576
-171 171                             229.613176
-172 172                              73.306091
-173 173                             188.780262
-174 174                             331.248496
-175 175                             141.947489
-176 176                            1078.556097
-177 177                             786.453034
-178 178                             490.104492
-179 179                             114.788152
-180 180                             165.021439
-181 181                             562.612328
-182 182                             200.554005
-183 183                             107.285245
-184 184                             101.198884
-185 185                              90.602926
-186 186                             125.528979
-187 187                             307.893929
-188 188                             240.121256
-189 189                             352.241474
-190 190                              84.428730
-191 191                             186.852823
-192 192                              87.893996
-193 193                             312.958795
-194 194                              91.869235
-195 195                              73.408596
-196 196                             453.295514
-197 197                             118.666281
-198 198                              63.833431
-199 199                             159.210622
-200 200                             169.362940
-201 201                             141.721508
-202 202                              82.100881
-203 203                             183.122790
-204 204                             301.221263
-205 205                             184.268805
-206 206                             274.152800
-207 207                             105.068965
-208 208                             142.988698
-209 209                             115.734904
-210 210                              55.652504
-211 211                              92.549165
-212 212                             153.145296
-213 213                             119.900203
-214 214                             325.508611
-215 215                             305.263003
-216 216                             825.213295
-217 217                             228.919003
-218 218                             242.252392
-219 219                             202.665516
-220 220                             287.344572
-221 221                             541.519607
-222 222                             318.549085
-223 223                             257.869852
-224 224                             291.895738
-225 225                             478.579586
-226 226                             333.472383
-227 227                             527.394490
-228 228                             232.383621
-229 229                             129.998987
-230 230                             556.282186
-231 231                             348.004188
-232 232                             191.146958
-233 233                             337.073865
-234 234                             355.613606
-235 235                             238.116100
-236 236                             194.543301
-237 237                             707.668702
-238 238                             659.162076
-239 239                             220.175608
-240 240                             407.678443
-241 241                              87.782395
-242 242                             451.831325
-243 243                             338.804678
-244 244                             143.466098
-245 245                             860.286201
-246 246                             216.395636
-247 247                              21.711898
-248 248                             265.809391
-249 249                             306.094234
-250 250                              68.687658
-251 251                             137.904379
-252 252                             293.919971
-253 253                             261.711145
-254 254                             272.855852
-255 255                             136.408721
-256 256                             228.734702
-257 257                             131.102049
-258 258                             139.587817
-259 259                             277.062446
-260 260                             252.921438
-261 261                              40.285912
-262 262                             306.607465
-263 263                            1059.976918
-264 264                             290.391785
-265 265                             128.783948
-266 266                             261.531776
-267 267                             740.311351
-268 268                             363.560075
-269 269                             247.982680
-270 270                              74.413602
-271 271                             249.576122
-272 272                              21.026999
-273 273                             319.204101
-274 274                             117.734114
-275 275                             188.993057
-276 276                             788.361176
-277 277                             414.356289
-278 278                             133.440567
-279 279                             181.457249
-280 280                             121.320713
-281 281                             252.776783
-282 282                             174.153077
-283 283                             140.912145
-284 284                             156.244828
-285 285                             130.196685
-286 286                             109.711915
-287 287                             147.371617
-288 288                             172.187255
-289 289                              69.310068
-290 290                             319.263992
-291 291                             856.807083
-292 292                             770.270851
-293 293                             621.633419
-294 294                             514.275368
-295 295                             237.322524
-296 296                             116.987420
-297 297                             958.173431
-298 298                              79.853020
-299 299                             532.773455
-300 300                             382.935802
-301 301                            1072.676815
-302 302                              54.323399
-303 303                             436.314840
-304 304                             356.324454
-305 305                              72.820143
-306 306                            1001.279600
-307 307                             995.821948
-308 308                             147.698123
-309 309                             204.841166
-310 310                             382.258913
-311 311                             139.793151
-312 312                              69.084363
-313 313                             574.217236
-314 314                             419.716953
-315 315                             732.992535
-316 316                            1609.059122
-317 317                             391.194284
-318 318                             177.684040
-319 319                             208.125426
-320 320                             218.042563
-321 321                              74.527662
-322 322                             245.635996
-323 323                             189.085434
-324 324                             551.377020
-325 325                             771.525120
-326 326                             216.585617
-327 327                             222.869238
-328 328                             200.765172
-329 329                             154.410472
-330 330                             180.153087
-331 331                             105.935972
-332 332                             368.156093
-333 333                             121.202951
-334 334                              80.888223
-335 335                             324.925840
-336 336                             111.053718
-337 337                             647.769543
-338 338                             532.217811
-339 339                              64.668800
-340 340                             141.415302
-341 341                             578.457541
-342 342                              37.047890
-343 343                             139.593254
-344 344                              71.451099
-345 345                             322.124691
-346 346                             135.470819
-347 347                             296.218204
-348 348                             147.106475
-349 349                             624.739947
-350 350                             238.645128
-351 351                             149.212919
-352 352                             660.623703
-353 353                             212.579143
-354 354                             190.864952
-355 355                             228.281698
-356 356                              80.262501
-357 357                             111.853397
-358 358                             189.869628
-359 359                             335.254297
-360 360                             195.693635
-361 361                             484.969480
-362 362                             227.126051
-363 363                             359.619312
-364 364                             475.569248
-365 365                             817.853134
-366 366                            1087.011864
-367 367                              93.431901
-368 368                             372.853701
-369 369                             495.013333
-370 370                              67.137213
-371 371                             136.119823
-372 372                             974.269867
-373 373                             274.031946
-374 374                             307.701504
-375 375                              48.571754
-376 376                             135.457330
-377 377                             234.502454
-378 378                             216.806492
-379 379                             407.660832
-380 380                             231.942879
-381 381                             326.523392
-382 382                             355.737068
-383 383                             417.042248
-384 384                             271.161443
-385 385                              98.506055
-386 386                             244.376092
-387 387                             396.151558
-388 388                             130.403261
-389 389                             203.249647
-390 390                             260.471018
-391 391                             393.972265
-392 392                             962.738217
-393 393                             139.701746
-394 394                             618.542154
-395 395                             523.191736
-396 396                             139.888412
-397 397                             178.260036
-398 398                             414.418281
-399 399                             518.362576
-400 400                             121.729420
-401 401                             227.821301
-402 402                             337.794399
-403 403                             210.367764
-404 404                             468.600580
-405 405                             572.368248
-406 406                                    NaN
-407 407                              75.572247
-408 408                             239.579837
-409 409                             743.288908
-410 410                             583.110674
-411 411                             407.412795
-412 412                             296.221441
-413 413                            1237.642311
-414 414                              97.743327
-415 415                             518.268487
-416 416                             362.699185
-417 417                             329.039586
-418 418                             247.502477
-419 419                             183.846332
-420 420                             115.531758
-421 421                             337.226379
-422 422                             181.760435
-423 423                             259.904507
-424 424                             291.788455
-425 425                             421.078769
-426 426                             140.698311
-427 427                             194.519078
-428 428                             315.589715
-429 429                              78.704288
-430 430                             343.685447
-431 431                             442.764131
-432 432                             215.851229
-433 433                             240.914819
-434 434                             940.785961
-435 435                             202.769907
-436 436                             189.457961
-437 437                             264.345232
-438 438                             246.971461
-439 439                              19.357319
-440 440                              97.382290
-441 441                             517.615764
-442 442                             669.488583
-443 443                             317.340494
-444 444                             593.838037
-445 445                             370.206059
-446 446                             732.417819
-447 447                             161.463565
-448 448                             938.175266
-449 449                             235.049953
-450 450                             310.469174
-451 451                             176.576954
-452 452                             181.172089
-453 453                             189.136030
-454 454                             692.477976
-455 455                             312.221734
-456 456                             409.200637
-457 457                             275.995716
-458 458                             236.253672
-459 459                            1092.299488
-460 460                             282.195845
-461 461                             125.646923
-462 462                             114.624123
-463 463                             138.030556
-464 464                             643.542826
-465 465                             261.470132
-466 466                             196.750583
-467 467                             323.103208
-468 468                             147.403689
-469 469                             627.385529
-470 470                             213.597295
-471 471                             161.891624
-472 472                              74.253534
-473 473                             107.558783
-474 474                             334.831291
-475 475                              83.123748
-476 476                             995.266391
-477 477                              73.049128
-478 478                             268.384663
-479 479                              25.134092
-480 480                             257.204056
-481 481                             137.905172
-482 482                             264.853642
-483 483                             467.838264
-484 484                             222.286350
-485 485                             255.341977
-486 486                             461.058537
-487 487                            1034.879785
-488 488                             209.228966
-489 489                             220.443449
-490 490                             996.873019
-491 491                             364.478139
-492 492                              95.487783
-493 493                             311.178534
-494 494                             753.215271
-495 495                             254.333851
-496 496                             242.789248
-497 497                             273.339199
-498 498                             586.079401
-499 499                             215.512792
-500 500                             106.818525
-501 501                             150.896410
-502 502                             371.168088
-503 503                             676.122332
-504 504                             381.327983
-505 505                             133.284981
-506 506                             127.815168
-507 507                              60.923250
-508 508                             655.093522
-509 509                              68.961972
-510 510                              41.299557
-511 511                             191.750362
-512 512                              77.255490
-513 513                             105.904092
-514 514                             365.833462
-515 515                             144.814072
-516 516                             153.457748
-517 517                             146.759912
-518 518                             137.769464
-519 519                             235.229214
-520 520                             289.359935
-521 521                             442.588606
-522 522                             103.696104
-523 523                              83.470128
-524 524                              95.005245
-525 525                             167.653145
-526 526                              43.329202
-527 527                                    NaN
-528 528                             556.462543
-529 529                             149.557351
-530 530                             408.756106
-531 531                             310.350731
-532 532                             128.766439
-533 533                             373.813829
-534 534                             227.582851
-535 535                             395.832062
-536 536                             203.499798
-537 537                             651.840370
-538 538                             110.246735
-539 539                              84.981564
-540 540                             106.405848
-541 541                             478.042697
-542 542                             186.129885
-543 543                             789.254608
-544 544                             893.181942
-545 545                             110.436321
-546 546                             416.763504
-547 547                             481.769258
-548 548                             462.416742
-549 549                             160.704503
-550 550                             265.104999
-551 551                             173.575215
-552 552                             638.121864
-553 553                             147.519542
-554 554                             174.733671
-555 555                             787.025575
-556 556                             373.941002
-557 557                             162.659553
-558 558                             472.474228
-559 559                             169.652821
-560 560                              53.572440
-561 561                             184.243012
-562 562                              88.197146
-563 563                             280.144683
-564 564                             600.876729
-565 565                              73.422437
-566 566                             103.139277
-567 567                             159.487114
-568 568                             175.003183
-569 569                             182.014055
-570 570                              65.994678
-571 571                              99.214753
-572 572                             245.973562
-573 573                             169.499241
-574 574                             492.687881
-575 575                             235.136508
-576 576                             205.309276
-577 577                             313.107225
-578 578                             214.614514
-579 579                             254.951116
-580 580                             330.614037
-581 581                             520.566136
-582 582                             105.350511
-583 583                              93.366555
-584 584                             173.538583
-585 585                             802.345535
-586 586                             204.093304
-587 587                             146.789217
-588 588                             235.779198
-589 589                             497.011243
-590 590                             236.489696
-591 591                             148.416563
-592 592                             185.823620
-593 593                             104.687037
-594 594                             138.790782
-595 595                             441.709756
-596 596                             157.020482
-597 597                              55.420670
-598 598                             474.778249
-599 599                             305.241143
-600 600                             539.682734
-601 601                             539.787593
-602 602                              45.305595
-603 603                             148.257576
-604 604                              96.849447
-605 605                             156.963736
-606 606                             391.374311
-607 607                             191.096563
-608 608                             313.434031
-609 609                             268.527596
-610 610                             330.577934
-611 611                             398.447372
-612 612                              98.395302
-613 613                              85.106615
-614 614                             249.037666
-615 615                             292.261051
-616 616                             287.007294
-617 617                             163.352637
-618 618                             326.889386
-619 619                             421.794903
-620 620                             182.734515
-621 621                             144.274717
-622 622                              90.651637
-623 623                             513.416916
-624 624                             288.449244
-625 625                              98.512047
-626 626                             508.920279
-627 627                             520.724746
-628 628                             357.663107
-629 629                             218.206074
-630 630                             214.136499
-631 631                              97.292925
-632 632                             317.948767
-633 633                             194.479533
-634 634                             330.879727
-635 635                              99.903773
-636 636                             165.085068
-637 637                              75.063454
-638 638                             158.132187
-639 639                             145.099666
-640 640                             184.575917
-641 641                             206.533416
-642 642                             777.766382
-643 643                              68.909120
-644 644                             183.104166
-645 645                             105.181213
-646 646                             336.876126
-647 647                             790.879832
-648 648                             306.696569
-649 649                             550.261665
-650 650                             420.624573
-651 651                             351.185856
-652 652                             899.474561
-653 653                             146.039017
-654 654                             405.900654
-655 655                             308.482578
-656 656                             526.142226
-657 657                             950.752603
-658 658                              90.629544
-659 659                             287.871213
-660 660                             468.805935
-661 661                             405.189973
-662 662                             386.987917
-663 663                              67.812388
-664 664                             188.473032
-665 665                             223.942417
-666 666                             454.884567
-667 667                             137.448875
-668 668                             314.027397
-669 669                             310.633202
-670 670                             363.887187
-671 671                             430.885070
-672 672                             287.254294
-673 673                             418.729486
-674 674                             432.418388
-675 675                             605.059276
-676 676                             320.581654
-677 677                             851.395401
-678 678                             101.231406
-679 679                             362.949948
-680 680                             514.459048
-681 681                             157.067857
-682 682                             771.605865
-683 683                             200.498415
-684 684                             725.871776
-685 685                              38.438461
-686 686                              62.623066
-687 687                             238.153553
-688 688                             144.680605
-689 689                             196.032175
-690 690                             131.117392
-691 691                             707.314244
-692 692                             296.532627
-693 693                            1099.369095
-694 694                             318.442615
-695 695                             179.850831
-696 696                             551.209206
-697 697                              83.707161
-698 698                             437.139628
-699 699                             267.398718
-700 700                             169.822797
-701 701                             310.136928
-702 702                             267.253772
-703 703                             109.057724
-704 704                              86.746790
-705 705                              86.096441
-706 706                             184.872942
-707 707                             488.878572
-708 708                             426.084020
-709 709                             259.612216
-710 710                              48.438423
-711 711                             215.069658
-712 712                             579.850883
-713 713                             644.168807
-714 714                             287.439089
-715 715                             268.336092
-716 716                             306.184048
-717 717                              58.242018
-718 718                              45.805399
-719 719                             204.988387
-720 720                             205.766666
-721 721                             189.418569
-722 722                             257.471636
-723 723                              72.658940
-724 724                             333.437701
-725 725                             140.800916
-726 726                             205.540686
-727 727                              61.655753
-728 728                             411.158987
-729 729                             320.713949
-730 730                             349.078899
-731 731                             655.583952
-732 732                             697.373276
-733 733                              80.361626
-734 734                             116.357475
-735 735                             270.616014
-736 736                              91.570865
-737 737                              73.941720
-738 738                              92.850540
-739 739                             211.968336
-740 740                             503.319125
-741 741                             197.659989
-742 742                             212.047510
-743 743                             374.392488
-744 744                             131.949647
-745 745                             203.744653
-746 746                             231.801749
-747 747                             127.061920
-748 748                             559.312266
-749 749                             631.559679
-750 750                             484.051365
-751 751                             315.536680
-752 752                             265.715048
-753 753                             128.385820
-754 754                             110.767039
-755 755                             186.308310
-756 756                             197.301824
-757 757                             115.699436
-758 758                             198.971066
-759 759                             601.063106
-760 760                              70.971352
-761 761                              73.340040
-762 762                              74.798140
-763 763                              61.926450
-764 764                             176.125241
-765 765                             532.711910
-766 766                              79.063233
-767 767                              67.774314
-768 768                             264.474946
-769 769                             125.322354
-770 770                             483.744837
-771 771                             676.702375
-772 772                             374.438545
-773 773                             211.835730
-774 774                             340.596711</code></pre>
+<pre><code>  ID X202206_Global_Pf_Mortality_Count_2020
+1  1                               81.27723
+2  2                              175.56953
+3  3                               77.09993
+4  4                              459.19845
+5  5                               72.54519
+6  6                              200.91585</code></pre>
 </div>
 </div>
 </section>
-<section id="final-dataset" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="final-dataset"><span class="header-section-number">2.10</span> Final dataset</h2>
+<section id="final-dataset" class="level3" data-number="2.4.6">
+<h3 data-number="2.4.6" class="anchored" data-anchor-id="final-dataset"><span class="header-section-number">2.4.6</span> Final dataset</h3>
 <p>Add a unique ID to our joined data (the polygons with the population) then left join again with our malaria counts per</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id :=</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(.)))</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>joined_data_malaria <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., LGA_pop_extract,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span> <span class="ot">=</span> <span class="st">"ID"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id :=</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(.)))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>joined_data_malaria <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., LGA_pop_extract,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span> <span class="ot">=</span> <span class="st">"ID"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have a spatial data set with the total population and malaria count for each LGA.</p>
 </section>
-<section id="calculations" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="calculations"><span class="header-section-number">2.11</span> Calculations</h2>
+<section id="calculations" class="level3" data-number="2.4.7">
+<h3 data-number="2.4.7" class="anchored" data-anchor-id="calculations"><span class="header-section-number">2.4.7</span> Calculations</h3>
 <p>Calculate the rate of malaria deaths per 100,000 of each LGA…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>joined_data_malaria <span class="ot">&lt;-</span> joined_data_malaria <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">death_rate_100_000 =</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           (x202206_global_pf_mortality_count_2020<span class="sc">/</span>t_tl)<span class="sc">*</span><span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>joined_data_malaria <span class="ot">&lt;-</span> joined_data_malaria <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">death_rate_100_000 =</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>           (x202206_global_pf_mortality_count_2020<span class="sc">/</span>t_tl)<span class="sc">*</span><span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Do not make a map yet! that forms part of the homework task…</p>
 </section>
-<section id="git-github-rmarkdown" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="git-github-rmarkdown"><span class="header-section-number">2.12</span> Git, GitHub, RMarkdown</h2>
+</section>
+<section id="git-github-rmarkdown" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="git-github-rmarkdown"><span class="header-section-number">2.5</span> Git, GitHub, RMarkdown</h2>
 <p>Here you will learn how to produce work that is open, reproducible, share able and portable using RStudio, RMarkdown, Git and GitHub. As more and more researchers and organisations publish associated code with their manuscripts or documents it’s very important to become adept at using these tools.</p>
 <p>The tools you will use are:</p>
 <ul>
@@ -1413,8 +581,8 @@ Geodetic CRS:  WGS 84</code></pre>
 <li><p>Git is a software version control system which allows you to keep track of the code you produce and the changes that you or others make to it.</p></li>
 <li><p>GitHub is an online repository that allows anyone to view the code you have produced (in whatever language you choose to program in) and use/scrutinise/contribute to/comment on it.</p></li>
 </ul>
-<section id="setup" class="level3" data-number="2.12.1">
-<h3 data-number="2.12.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">2.12.1</span> Setup</h3>
+<section id="setup" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">2.5.1</span> Setup</h3>
 <ol type="1">
 <li><p>First need to install Git — https://git-scm.com/</p></li>
 <li><p>Go to http://github.com, create an account and create a new repository (call it anything you like - ‘gis_code’ or something similar), making sure it is public and you check the box that says ‘initialise new repository with a README’ — click ‘create repository’ at the bottom</p></li>
@@ -1432,42 +600,42 @@ Geodetic CRS:  WGS 84</code></pre>
 <li>Your new repository (‘repo’) will be created and this is where you will be able to store your code online. You will notice that a README.md markdown file has also been created. This can be edited to tell people what they are likely to find in this repository.</li>
 </ol>
 </section>
-<section id="using-rstudio-with-git" class="level3" data-number="2.12.2">
-<h3 data-number="2.12.2" class="anchored" data-anchor-id="using-rstudio-with-git"><span class="header-section-number">2.12.2</span> Using RStudio with Git</h3>
+<section id="using-rstudio-with-git" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="using-rstudio-with-git"><span class="header-section-number">2.5.2</span> Using RStudio with Git</h3>
 <p>In summer 2021 GitHub changed it’s authentication process to a token based system as opposed to a password based system. David Keys provided an <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">excellent overview with some videos that documented this change and how to now set things up, which i have adapted here</a></p>
-<section id="check-git-is-installed" class="level4" data-number="2.12.2.1">
-<h4 data-number="2.12.2.1" class="anchored" data-anchor-id="check-git-is-installed"><span class="header-section-number">2.12.2.1</span> Check Git is installed</h4>
+<section id="check-git-is-installed" class="level4" data-number="2.5.2.1">
+<h4 data-number="2.5.2.1" class="anchored" data-anchor-id="check-git-is-installed"><span class="header-section-number">2.5.2.1</span> Check Git is installed</h4>
 <p>Next to the console window you will see a terminal tab, check Git is installed with <code>which git</code> then <code>git --version</code> you should get a message in response that says where your git installation is and the version you have.</p>
 </section>
-<section id="configure-your-git" class="level4" data-number="2.12.2.2">
-<h4 data-number="2.12.2.2" class="anchored" data-anchor-id="configure-your-git"><span class="header-section-number">2.12.2.2</span> Configure your Git</h4>
+<section id="configure-your-git" class="level4" data-number="2.5.2.2">
+<h4 data-number="2.5.2.2" class="anchored" data-anchor-id="configure-your-git"><span class="header-section-number">2.5.2.2</span> Configure your Git</h4>
 <p>You need to tell Git who you are and your GitHub username. The easiest way is to use the <code>usethis</code> package, you will need to install and library it.</p>
 <p>Then, in the console, type the function <code>edit_git_config()</code></p>
 <p>A Git config will load and you need to change your name and email to match GitHub.</p>
 <p>If this is empty use the following template and save the file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>[user]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    name <span class="ot">=</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    email <span class="ot">=</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    username <span class="ot">=</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>[user]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    name <span class="ot">=</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    email <span class="ot">=</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    username <span class="ot">=</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="connect-git-to-github" class="level4" data-number="2.12.2.3">
-<h4 data-number="2.12.2.3" class="anchored" data-anchor-id="connect-git-to-github"><span class="header-section-number">2.12.2.3</span> Connect Git to GitHub</h4>
+<section id="connect-git-to-github" class="level4" data-number="2.5.2.3">
+<h4 data-number="2.5.2.3" class="anchored" data-anchor-id="connect-git-to-github"><span class="header-section-number">2.5.2.3</span> Connect Git to GitHub</h4>
 <p>From GitHub you need to generate a personal access token. You can use the function <code>create_github_token()</code> from the <code>usethis</code> package or also through</p>
 <ul>
 <li>GitHub &gt; settings &gt; Developer settings &gt; personal access tokens &gt; generate new token.</li>
 </ul>
 <p>Use a descriptive name and consider saving the token - it won’t save on GitHub</p>
 <p>The last step is to store this token in Git with the <code>gitcreds</code> package &gt; install and load it &gt; then use the function <code>gitcreds_set()</code> &gt; copy your token in.</p>
-<p>There are many different ways to use Git, GitHub and R. I will focus to two here. Read the next two parts then decicde which to use.</p>
+<p>There are many different ways to use Git, GitHub and R. I will focus to two here. Read the next two parts then decide which to use.</p>
 </section>
 </section>
-<section id="way-1---starting-fresh" class="level3" data-number="2.12.3">
-<h3 data-number="2.12.3" class="anchored" data-anchor-id="way-1---starting-fresh"><span class="header-section-number">2.12.3</span> Way 1 - starting fresh</h3>
+<section id="way-1---starting-fresh" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="way-1---starting-fresh"><span class="header-section-number">2.5.3</span> Way 1 - starting fresh</h3>
 <p>The first way assumes you are starting fresh - meaning you don’t have a project but you know you want to put your work online.</p>
 <ol type="1">
-<li><p>Under [Set up your GitHub] we made a repository on GitHub. Copy that URL.</p></li>
+<li><p>Under setup we made a repository on GitHub. Copy that URL.</p></li>
 <li><p>Open RStudio &gt; File New Project &gt; Version Control &gt; Git</p></li>
 <li><p>Copy in the repository URL and provide a project directory name…but it should populate when you paste in the URL</p></li>
 </ol>
@@ -1481,8 +649,8 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 </section>
-<section id="way-2---if-have-an-existing-project" class="level3" data-number="2.12.4">
-<h3 data-number="2.12.4" class="anchored" data-anchor-id="way-2---if-have-an-existing-project"><span class="header-section-number">2.12.4</span> Way 2 - If have an existing project</h3>
+<section id="way-2---if-have-an-existing-project" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="way-2---if-have-an-existing-project"><span class="header-section-number">2.5.4</span> Way 2 - If have an existing project</h3>
 <ol type="1">
 <li><p>Open RStudio and your existing project (or make a new one…i will make one here). In RStudio Tools &gt; Global Options, under ‘Git/SVN’ check the box to allow version control and locate the folder on your computer where the git.exe file is located — if you have installed git then this should be automatically there. If you make a new project make sure you create a file (<code>.R</code> or <code>.Rmd</code> through File &gt; New File), add something to it, then save it (File &gt; Save As) into your project folder. When it saves it should appear in the bottom right Files window.</p></li>
 <li><p>Next go Tools &gt; Project Options &gt; Git/SVN &gt; and select the version control system as Git. You should now see a git tab in the environment window of RStudio (top right) and the files also appear under the Git tab. It should look something like this….</p></li>
@@ -1498,8 +666,8 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 <p>Now you will be able to use Git and GitHub as per the following instructions…</p>
 </section>
-<section id="commiting-to-git" class="level3" data-number="2.12.5">
-<h3 data-number="2.12.5" class="anchored" data-anchor-id="commiting-to-git"><span class="header-section-number">2.12.5</span> Commiting to Git</h3>
+<section id="commiting-to-git" class="level3" data-number="2.5.5">
+<h3 data-number="2.5.5" class="anchored" data-anchor-id="commiting-to-git"><span class="header-section-number">2.5.5</span> Commiting to Git</h3>
 <ol type="1">
 <li><p>As well as saving (as you normally do with any file), which saves a copy to our local directory, we will also ‘commit’ or create a save point for our work on git.</p></li>
 <li><p>To do this, you should click the ‘Git’ icon and up will pop a menu like the one below:</p></li>
@@ -1537,14 +705,14 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 </section>
-<section id="push-to-github" class="level3" data-number="2.12.6">
-<h3 data-number="2.12.6" class="anchored" data-anchor-id="push-to-github"><span class="header-section-number">2.12.6</span> Push to Github</h3>
+<section id="push-to-github" class="level3" data-number="2.5.6">
+<h3 data-number="2.5.6" class="anchored" data-anchor-id="push-to-github"><span class="header-section-number">2.5.6</span> Push to Github</h3>
 <p>We need to create a new GitHub repo for our local project. Luckily the <code>usethis</code> package can do this for us. Simply type the function <code>use_github()</code> in the console and a new GitHub repo will appear using the name of your project!</p>
 <p>Now we can push our changes to GitHub using the up arrow either in the RStudio Git tab (environment quadrant), or from the review changes box (opens when you click commit).</p>
 <p>But….if the push button is greyed out go to the section [Greyed out push button]</p>
 </section>
-<section id="pull-from-github" class="level3" data-number="2.12.7">
-<h3 data-number="2.12.7" class="anchored" data-anchor-id="pull-from-github"><span class="header-section-number">2.12.7</span> Pull from GitHub</h3>
+<section id="pull-from-github" class="level3" data-number="2.5.7">
+<h3 data-number="2.5.7" class="anchored" data-anchor-id="pull-from-github"><span class="header-section-number">2.5.7</span> Pull from GitHub</h3>
 <ol type="1">
 <li><p>Pull will take any changes to the global repo and bring them into your local repo. Go to your example GitHub repo (online) and click on your test file &gt; edit this file.</p></li>
 <li><p>Add a line of code or a comment, preview the changes then commit directly to the main branch.</p></li>
@@ -1571,18 +739,18 @@ Geodetic CRS:  WGS 84</code></pre>
 <p><strong>Now take the code you have used this week and put it on GitHub and add the link to the shared spreadsheet</strong></p>
 <p><strong>However</strong> note that GitHub has a maximum file size of 50mb, if you have larger files you must ignore them in the <code>.gitignore</code> file…e.g.&nbsp;my .gitignore looks like this..</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>prac1_data<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>prac2_data<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>prac3_data<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>prac4_data<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>prac1_images<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>prac2_images<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>prac3_images<span class="sc">/</span><span class="er">*</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>prac4_images<span class="sc">/</span><span class="er">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>prac1_data<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>prac2_data<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>prac3_data<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>prac4_data<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>prac1_images<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>prac2_images<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>prac3_images<span class="sc">/</span><span class="er">*</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>prac4_images<span class="sc">/</span><span class="er">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="forking" class="level3" data-number="2.12.8">
-<h3 data-number="2.12.8" class="anchored" data-anchor-id="forking"><span class="header-section-number">2.12.8</span> Forking</h3>
+<section id="forking" class="level3" data-number="2.5.8">
+<h3 data-number="2.5.8" class="anchored" data-anchor-id="forking"><span class="header-section-number">2.5.8</span> Forking</h3>
 <p>A Fork in GitHub is a copy of someone’s repository to your own GitHub account. You could use it as a base starting point for your project or to make a fix and then submit a <em>pull</em> request to the original owner who would then pull your changes to their repository.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1608,7 +776,7 @@ Important
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="prac2_images/pull.jpg" class="img-fluid figure-img" style="width:30.0%"></p>
+<p><img src="prac2_images/pull.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
 <figcaption class="figure-caption">Pull request. Source: <a href="https://codex.so/fork-and-pull-en">codex (2024)</a></figcaption>
 </figure>
 </div>

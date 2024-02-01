@@ -26,6 +26,7 @@ book:
   sidebar:
     title: "Spatial analysis of health data"
     style: floating
+    favicon: "assets/favicon.ico"	
     reader-mode: true
   repo-url: https://github.com/andrewmaclachlan/digital-urban-hyderabad
   repo-actions: [edit, issue]  
