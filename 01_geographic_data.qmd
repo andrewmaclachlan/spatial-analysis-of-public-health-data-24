@@ -1,4 +1,4 @@
-# Geographic Information
+# Geographic information
 
 ::: callout-note
 **Reading**
