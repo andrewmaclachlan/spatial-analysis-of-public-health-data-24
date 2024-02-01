@@ -16,7 +16,7 @@
 
 In this practical you will be introduced to a suite of different models that will allow you to test a variety of research questions and hypotheses through modelling the associations between two or more spatially referenced variables. 
 
-In 2023 New Zealand scrapped an anti-smoking law that would mean a generational smoking bad for anyone born after 2008. So, here we will explore the factors that might affect smoking in New Zealan and see if they vary spatially.
+In 2023 New Zealand scrapped an anti-smoking law that would mean a generational smoking bad for anyone born after 2008. So, here we will explore the factors that might affect smoking in New Zealand and see if they vary spatially.
 
 This practical will walk you through the common steps that you should go through when building a regression model using spatial data to test a stated research hypothesis; from carrying out some descriptive visualisation and summary statistics, to interpreting the results and using the outputs of the model to inform your next steps.
 
@@ -28,7 +28,7 @@ This is the same has homework 1....
 
 -   Go to the [Stats NZ website](https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020) and download the Statistical area 1 dataset for 2018 for the whole of New Zealand. Download the csv this time
 
-The figure below explains the geographies of New Zealand, we could replcaite this analysis for SA1 or SA2 data.
+The figure below explains the geographies of New Zealand, we could replicate this analysis for SA1 or SA2 data.
 
 [![NZ geographies](prac4_images/Figure-1_GeoHierarchy_Diagram-with-legend-changes.jpg){fig-align="center" width="400"}](https://www.stats.govt.nz/methods/geographic-hierarchy#:~:text=Moving%20up%20the%20hierarchy%2C%20statistical,and%20territorial%20authorities%20and%20represent)
 
@@ -38,7 +38,7 @@ The figure below explains the geographies of New Zealand, we could replcaite thi
 library(sf)
 library(tidyverse)
 
-districts <- st_read("prac4_data/statsnzterritorial-authority-2018-generalised-SHP/territorial-authority-2018-generalised.shp")
+ta <- st_read("prac4_data/statsnzterritorial-authority-2018-generalised-SHP/territorial-authority-2018-generalised.shp")
 
 census <- read_csv("prac4_data/SA1_census/Individual_part2_totalNZ-wide_format_updated_16-7-20.csv")
 
@@ -109,7 +109,6 @@ Datatypelist <- census_authorities_data %>%
 Datatypelist
 ```
 
-
 Character! we will need to change that...
 
 ```{r}
@@ -164,7 +163,7 @@ As it is, the scatter plot shows that, generally, as the $x$ axis *independent v
 
 **Some conventions** - In a regression equation, the dependent variable is always labelled $y$ and shown on the $y$ axis of a graph, the predictor or independent variable(s) is(are) always shown on the $x$ axis. 
 
-I have added a blue line of best-fit - this is the line that can be drawn by minimising the sum of the squared differences between the line and the residuals. The residuals are all of the dots not falling exactly on the blue line. An algorithm known as 'ordinary least squares' (OLS) is used to draw this line and it simply tries a selection of different lines until the sum of the squared divations between all of the residuals and the blue line is minimised, leaving the final solution. 
+I have added a blue line of best-fit - this is the line that can be drawn by minimising the sum of the squared differences between the line and the residuals. The residuals are all of the dots not falling exactly on the blue line. An algorithm known as 'ordinary least squares' (OLS) is used to draw this line and it simply tries a selection of different lines until the sum of the squared differences between all of the residuals and the blue line is minimised, leaving the final solution. 
 
 As a general rule, the better the blue line is at summarising the relationship between $y$ and $x$, the better the model. 
 
@@ -423,7 +422,7 @@ model2_residuals <- model2 %>%
   augment(., census_authorities_data_norm)
 
 
-districts_model_data<- districts%>%
+ta_model_data<- ta%>%
   clean_names(.)%>%
   left_join(., model2_residuals,
             by=c("ta2018_v1"="area_code"))
@@ -437,7 +436,7 @@ library(tmap)
 #now plot the residuals
 tmap_mode("plot")
 
-tm_shape(districts_model_data) +
+tm_shape(ta_model_data) +
   tm_polygons(".resid",
               palette = "RdYlBu")
 
@@ -478,12 +477,12 @@ model3_residuals <- model3 %>%
   augment(., census_authorities_data_norm_filter)
 
 
-districts_model3_data<- districts%>%
+ta_model3_data<- ta%>%
   clean_names(.)%>%
   left_join(., model3_residuals,
             by=c("ta2018_v1"="area_code"))
 
-tm_shape(districts_model3_data) +
+tm_shape(ta_model3_data) +
   tm_polygons(".resid",
               palette = "RdYlBu")
 
@@ -497,10 +496,10 @@ Yes - and some of you will remember this from the practical two weeks ago. We ca
 ```{r}
 #calculate the centroids of all Wards in London
 
-districts_model3_data <- districts_model3_data %>%
+ta_model3_data <- ta_model3_data %>%
   filter(ta2018_v1 != "999" & ta2018_v1 != "067")
 
-coordsW <- districts_model3_data%>%
+coordsW <- ta_model3_data%>%
   st_centroid()%>%
   st_geometry()
 
@@ -513,7 +512,7 @@ library(spdep)
 #(remember from the lecture a couple of weeks ago). 
 #We'll start with a simple binary matrix of queen's case neighbours
 
-LWard_nb <- districts_model3_data %>%
+LWard_nb <- ta_model3_data %>%
   poly2nb(., queen=T)
 
 #or nearest neighbours
@@ -543,7 +542,7 @@ Now run a Moran's I test on the residuals, first using queens neighbours
 
 ```{r, message=FALSE, cache=FALSE}
 
-Queen <- districts_model3_data %>%
+Queen <- ta_model3_data %>%
   st_drop_geometry()%>%
   dplyr::select(.resid)%>%
   pull()%>%
@@ -555,7 +554,7 @@ Queen <- districts_model3_data %>%
 Then nearest k-nearest neighbours
 
 ```{r, message=FALSE, cache=FALSE}
-Nearest_neighbour <- districts_model3_data %>%
+Nearest_neighbour <- ta_model3_data %>%
   st_drop_geometry()%>%
   dplyr::select(.resid)%>%
   pull()%>%
@@ -599,7 +598,7 @@ slag_dv_model2_queen <- lagsarlm(percent_regular_smoker ~
                percent_no_qualification + 
                percent_home_owner +
                census_2018_total_personal_income_median_curp_15years_and_over,
-               data = districts_model3_data, 
+               data = ta_model3_data, 
                nb2listw(LWard_nb, style="C"), 
                method = "eigen")
 
@@ -661,7 +660,7 @@ sem_1 <- errorsarlm(percent_regular_smoker ~
                percent_no_qualification + 
                percent_home_owner +
                census_2018_total_personal_income_median_curp_15years_and_over,
-               data = districts_model3_data, 
+               data = ta_model3_data, 
                nb2listw(LWard_nb, style="C"), 
                method = "eigen")
 
@@ -698,14 +697,14 @@ library(spgwr)
 
 coordsW2 <- st_coordinates(coordsW)
 
-districts_model3_data_GWR <- cbind(districts_model3_data,coordsW2)
+ta_model3_data_GWR <- cbind(ta_model3_data,coordsW2)
 
 GWRbandwidth <- gwr.sel(percent_regular_smoker ~
                percent_no_qualification + 
                percent_home_owner +
                census_2018_total_personal_income_median_curp_15years_and_over,
-               data = districts_model3_data_GWR,  
-                        coords=cbind(districts_model3_data_GWR$X, districts_model3_data_GWR$Y),
+               data = ta_model3_data_GWR,  
+                        coords=cbind(ta_model3_data_GWR$X, ta_model3_data_GWR$Y),
                   adapt=T)
 GWRbandwidth
 ```
@@ -747,8 +746,8 @@ gwr.model = gwr(percent_regular_smoker ~
                percent_no_qualification + 
                percent_home_owner +
                census_2018_total_personal_income_median_curp_15years_and_over,
-               data = districts_model3_data_GWR,  
-                        coords=cbind(districts_model3_data_GWR$X, districts_model3_data_GWR$Y), 
+               data = ta_model3_data_GWR,  
+                        coords=cbind(ta_model3_data_GWR$X, ta_model3_data_GWR$Y), 
                 adapt=GWRbandwidth,
                 #matrix output
                 hatmatrix=TRUE,
@@ -786,7 +785,7 @@ names(results)
 #attach coefficients to original
 
 
-districts_model3_data_GWR_results <- districts_model3_data_GWR %>%
+ta_model3_data_GWR_results <- ta_model3_data_GWR %>%
   mutate(coefqualification = results$percent_no_qualification,
          coefhomeowner = results$percent_home_owner,
          coefincome = results$census_2018_total_personal_income_median_curp_15years_and_over_se)
@@ -794,7 +793,7 @@ districts_model3_data_GWR_results <- districts_model3_data_GWR %>%
 
 
 ```{r}
-tm_shape(districts_model3_data_GWR_results) +
+tm_shape(ta_model3_data_GWR_results) +
   tm_polygons(col = "coefqualification", 
               palette = "RdBu", 
               alpha = 0.5)
@@ -816,12 +815,12 @@ sigTest = abs(gwr.model$SDF$percent_no_qualification)- 2* gwr.model$SDF$percent_
 
 
 #store significance results
-districts_model3_data_GWR_results <- districts_model3_data_GWR_results %>%
+ta_model3_data_GWR_results <- ta_model3_data_GWR_results %>%
   mutate(GWRpercent_no_qualification_sig = sigTest)
 ```
 
 ```{r}
-tm_shape(districts_model3_data_GWR_results) +
+tm_shape(ta_model3_data_GWR_results) +
   tm_polygons(col = "GWRpercent_no_qualification_sig", 
               palette = "RdYlBu")
 ```
@@ -860,10 +859,10 @@ Now let's intersect with the territorial authority boundaries and calculate a de
 **Note** that the districts object is in the correct CRS, however i beleive this is due to naming differences so we will transform it just incase.
 
 ```{r}
-districts <- districts %>%
+ta <- ta %>%
    st_transform(., 2135)
 
-stores_joined <- districts %>%
+stores_joined <- ta %>%
   mutate(n = lengths(st_intersects(., OSM_pois_filter)))%>%
   janitor::clean_names()%>%
   #calculate area
