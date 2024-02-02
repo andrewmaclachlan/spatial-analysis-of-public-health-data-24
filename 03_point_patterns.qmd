@@ -22,6 +22,16 @@ By the end of this practical you should be able to:
 4.  Investigate the degree to which values at spatial points are similar (or different) to each other
 5.  Interpret the meaning of spatial autocorrleation in spatial data
 
+
+Today's lecture is available online...
+
+```{r echo = FALSE, out.width='40%'}
+xaringanExtra::embed_xaringan(
+  url = "https://andrewmaclachlan.github.io/Spatial-analysis-of-public-health-data-24-points-and-autocorrelation/",
+  ratio = "16:9")
+
+```
+
 ## Introduction
 
 Today you will learn how to begin to analyse patterns in spatial data with points and spatially continuous observations.
