@@ -23,7 +23,7 @@ The task is to join some non spatial data to some spatial data and make a map
 
 -   Go to the [Stats NZ website](https://www.stats.govt.nz/information-releases/statistical-area-1-dataset-for-2018-census-updated-march-2020) and download the Statistical area 1 dataset for 2018 for the whole of New Zealand. Download the excel file this week, **not** the `.csv`.
 
--   Unzip the downloaded census file and open 2018-SA1-dataset-individual-part-2-total-NZ_updated_16-7-20, you will see a tab for Territorial authority. Join the 2018 paid employee field to the spatial data and make a basic map. Hint, you may need to make a new `.csv` file from the data.
+-   Unzip the downloaded census file and open 2018-SA1-dataset-individual-part-2-total-NZ_updated_16-7-20, you will see a tab for Territorial authority. Join a 2018 health related (see point below) field to the spatial data and make a basic map. Hint, you may need to make a new `.csv` file from the data, we will use the raw data later in the week.
 
 -   Make a map of health related data (e.g. smoking, glasses, hearing aid)
 :::
