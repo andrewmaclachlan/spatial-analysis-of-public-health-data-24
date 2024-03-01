@@ -261,7 +261,8 @@ Note
 </ul>
 <p><strong>Watching</strong></p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=osAbJeTho5w">What is Spatial Data Science</a></li>
+<li><p><a href="https://www.youtube.com/watch?v=osAbJeTho5w">What is Spatial Data Science, CARTO</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=8I_VpC6IuJs">Can you make an accurate map, SciShow</a></p></li>
 </ul>
 </div>
 </div>
@@ -713,10 +714,11 @@ remotes::install_github('r-tmap/tmap')</code></pre>
 <h3 data-number="1.4.4" class="anchored" data-anchor-id="long-vs-wide-data"><span class="header-section-number">1.4.4</span> Long vs wide data</h3>
 <p>You will get a warning saying that each row in x (the spatial data) was expected to match just 1 y row. However, our health data is long data (also called tidy data). This differs from “regular” wide data as…</p>
 <ol type="1">
-<li><p>Each variable must have its own column.</p></li>
+<li><p>Each variable (all values that have the same attribute, e.g.&nbsp;height, temperature, duration, weeks) must form its own column.</p></li>
 <li><p>Each observation must have its own row.</p></li>
 <li><p>Each value must have its own cell.</p></li>
 </ol>
+<p>Note, see <a href="https://vita.had.co.nz/papers/tidy-data.pdf">Wickham’s paper</a> for worked examples and definition of variables, from page 3.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">

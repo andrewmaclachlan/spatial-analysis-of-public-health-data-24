@@ -13,7 +13,10 @@ Each session there will be some reading to support the taught content. You are n
 
 **Watching**
 
--   [What is Spatial Data Science](https://www.youtube.com/watch?v=osAbJeTho5w)
+-   [What is Spatial Data Science, CARTO](https://www.youtube.com/watch?v=osAbJeTho5w)
+
+-   [Can you make an accurate map, SciShow](https://www.youtube.com/watch?v=8I_VpC6IuJs)
+
 :::
 
 ::: callout-important
@@ -359,11 +362,13 @@ joined_data <- LSOAs %>%
 
 You will get a warning saying that each row in x (the spatial data) was expected to match just 1 y row. However, our health data is long data (also called tidy data). This differs from "regular" wide data as...
 
-1.  Each variable must have its own column.
+1.  Each variable (all values that have the same attribute, e.g. height, temperature, duration, weeks) must form its own column.
 
 2.  Each observation must have its own row.
 
 3.  Each value must have its own cell.
+
+Note, see [Wickham's paper](https://vita.had.co.nz/papers/tidy-data.pdf) for worked examples and definition of variables, from page 3. 
 
 ```{r echo=FALSE, out.width = "500px", fig.align='center', cache=FALSE, fig.cap="This figure is taken directly from Grolemund and Wickham (2017) Chapter 12.Following three rules makes a dataset tidy: variables are in columns, observations are in rows, and values are in cells. Source: [KSK analytics](https://www.ksk-anl.com/blog/hadley-wickhams-tidy-data-in-rapidminer-part-1/)"}
 knitr::include_graphics('prac1_images/messy-tidy-ex.png') 
