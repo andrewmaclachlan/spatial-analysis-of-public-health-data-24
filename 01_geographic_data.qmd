@@ -345,7 +345,9 @@ knitr::include_graphics('prac1_images/left-join.gif')
 
 -   If there are multiple matches then a new row is created (e.g. If there were two health rows for a single LSOA)
 
--   If there are no matches then the data is dropped (e.g. the LSOAs not in London)
+-   If there are no matches then the data is dropped (e.g. the LSOAs not in London), but the polygons (the left dataset) are retained. 
+
+  - Note, if this were the case i could filter out the London LSOAs based on the `lad11cd` column starting with E09, something like.. `filter(str_detect(lad11cd, "^E09"))` or join the data and then filter based on NAs
 
 ```{r echo=FALSE, out.width = "500px", fig.align='center', cache=FALSE, fig.cap="dplyr::left_join() example. Source: [Tidy explain by Garrick Aden‑Buie](https://www.garrickadenbuie.com/project/tidyexplain/)"}
 knitr::include_graphics('prac1_images/left-join-extra.gif') 

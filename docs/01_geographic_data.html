@@ -691,7 +691,8 @@ remotes::install_github('r-tmap/tmap')</code></pre>
 </div>
 <ul>
 <li><p>If there are multiple matches then a new row is created (e.g.&nbsp;If there were two health rows for a single LSOA)</p></li>
-<li><p>If there are no matches then the data is dropped (e.g.&nbsp;the LSOAs not in London)</p></li>
+<li><p>If there are no matches then the data is dropped (e.g.&nbsp;the LSOAs not in London), but the polygons (the left dataset) are retained.</p></li>
+<li><p>Note, if this were the case i could filter out the London LSOAs based on the <code>lad11cd</code> column starting with E09, something like.. <code>filter(str_detect(lad11cd, "^E09"))</code> or join the data and then filter based on NAs</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
