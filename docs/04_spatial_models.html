@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 </ul>
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/andrewmaclachlan/digital-urban-hyderabad" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/andrewmaclachlan/spatial-analysis-of-public-health-data-24" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#including-spatial-features" id="toc-including-spatial-features" class="nav-link" data-scroll-target="#including-spatial-features"><span class="header-section-number">4.6</span> Including spatial features</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/andrewmaclachlan/digital-urban-hyderabad/edit/main/04_spatial_models.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/andrewmaclachlan/digital-urban-hyderabad/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/andrewmaclachlan/spatial-analysis-of-public-health-data-24/edit/main/04_spatial_models.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/andrewmaclachlan/spatial-analysis-of-public-health-data-24/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -734,7 +734,7 @@ F-statistic: 61.86 on 2 and 65 DF,  p-value: 9.037e-16</code></pre>
 <pre><code># A tibble: 1 × 5
   statistic p.value autocorrelation method             alternative
       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;      
-1      1.41  0.0260           0.227 Durbin-Watson Test two.sided  </code></pre>
+1      1.41 0.00800           0.227 Durbin-Watson Test two.sided  </code></pre>
 </div>
 </div>
 <p>As you can see, the DW statistics for our model is 1.41, so some indication of autocorrelation, but perhaps nothing to worry about.</p>
@@ -846,7 +846,7 @@ F-statistic: 65.68 on 3 and 62 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code># A tibble: 1 × 5
   statistic p.value autocorrelation method             alternative
       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;      
-1      1.27 0.00400           0.345 Durbin-Watson Test two.sided  </code></pre>
+1      1.27       0           0.345 Durbin-Watson Test two.sided  </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#and for future use, write the residuals out</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>model3_residuals <span class="ot">&lt;-</span> model3 <span class="sc">%&gt;%</span></span>
