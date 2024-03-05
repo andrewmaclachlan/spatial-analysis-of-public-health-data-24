@@ -584,7 +584,7 @@ Ward and Gleditsch (2008) describe this situation (where the value of our $y$ de
 
 $$y_i = \beta_0 + \beta_1x_i + \rho w_i.y_i + \epsilon_i$$
 
-In this equation, $w$ is the spatial weights matrix you generated and $w_i$ is vector of all neighbouring areas (in our case, Wards) for any Ward $y_i$.
+In this equation, $w$ is the spatial weights matrix you generated and $w_i$ is vector of all neighbouring areas (in our case, Wards) for any Ward $y_i$. If using binary this will be a sum (e.g. the value of $y$ plotted against the sum of $y$ of the neighbouring wards). This may be explained as a weighted sum as the non-neighbours will be removed, the weight being the neighbours If this is row standardised it will be a weighted average of the neighbouring $y$ values. Typically we use a **row standardised** matrix.
 
 In this model, a positive value for the $\rho w_i.y_i$ parameter would indicate that the average value for the percent smoking is expected to be higher if, on average, neighbouring authorities also have a higher percentage of people who smoke.
 
@@ -669,11 +669,11 @@ Ward and Gleditsch (2008) characterise this model as seeing spatial autocorrelat
 
 The spatial error model can be written:
 
-$$y_i = \beta_0 + \beta_1x_i + \lambda w_i.\xi_i + \epsilon_i$$
+$$y_i = \beta_0 + \beta_1x_i + \lambda w_i\xi_i + \epsilon_i$$
 
 where
 
--   $\xi_i$ is the spatial component of the error terms...in other words the residuals of the values in surrounding spatial units based on the weight matrix.
+-   $\xi_i$ is the spatial component of the error terms...in other words the residuals of the values in surrounding spatial units based on the weight matrix. The same rules apply as the lag (e.g. binary = sum, row standardisied = weighted average).
 
 -   $\lambda$ is a measure of correlation between neighbouring residuals.. "it indicates the extent to which the spatial component of the errors $\xi_i$ are correlated with one another for nearby observations" as per the weight matrix, Ward and Gleditsch (2008). **If there is no correlation between the then this defaults to normal OLS regression**
 

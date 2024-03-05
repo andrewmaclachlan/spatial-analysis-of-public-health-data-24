@@ -22,8 +22,7 @@ By the end of this practical you should be able to:
 4.  Investigate the degree to which values at spatial points are similar (or different) to each other
 5.  Interpret the meaning of spatial autocorrleation in spatial data
 
-
-Today's lecture is available online...
+Today's lecture is available online...at this URL: https://andrewmaclachlan.github.io/Spatial-analysis-of-public-health-data-24-points-and-autocorrelation/#1 
 
 ```{r echo = FALSE, out.width='40%'}
 xaringanExtra::embed_xaringan(
@@ -605,9 +604,9 @@ tm_shape(points_sf_joined) +
         title="Local Moran's I Z-score")
 ```
 
-### Getis Ord \(G_{i}^{*}\)
+### Getis Ord (G\_{i}\^{\*})
 
-What about the Getis Ord \(G_{i}^{*}\)statistic for hot and cold spots...
+What about the Getis Ord (G\_{i}\^{\*})statistic for hot and cold spots...
 
 This is a very similar concept to Local Moran's I except it just returns a z-score...remember that a z-score shows **how many standard deviations a value (our value) is away (above or below) from the mean (of the expected values)**
 
@@ -621,7 +620,7 @@ $$Z = \frac{x-\mu}{\sigma}$$ Where:
 
 **Note**, consult the [Global vs location spatial autocorrelation resource](https://storymaps.arcgis.com/stories/5b26f25bb81a437b89003423505e2f71) for how this is computed in Local Moran's I if you are interested, although interpretation is the most important part here.
 
-**However**, in the case of Getis Ord \(G_{i}^{*}\) this is the local sum (of the neighbourhood) compared to the sum of all features
+**However**, in the case of Getis Ord (G\_{i}\^{\*}) this is the local sum (of the neighbourhood) compared to the sum of all features
 
 In Moran's I this is just the value of the spatial unit (e.g. polygon of the ward) compared to the neighbouring units.
 

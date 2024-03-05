@@ -734,7 +734,7 @@ F-statistic: 61.86 on 2 and 65 DF,  p-value: 9.037e-16</code></pre>
 <pre><code># A tibble: 1 × 5
   statistic p.value autocorrelation method             alternative
       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;      
-1      1.41 0.00800           0.227 Durbin-Watson Test two.sided  </code></pre>
+1      1.41  0.0100           0.227 Durbin-Watson Test two.sided  </code></pre>
 </div>
 </div>
 <p>As you can see, the DW statistics for our model is 1.41, so some indication of autocorrelation, but perhaps nothing to worry about.</p>
@@ -846,7 +846,7 @@ F-statistic: 65.68 on 3 and 62 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code># A tibble: 1 × 5
   statistic p.value autocorrelation method             alternative
       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;      
-1      1.27       0           0.345 Durbin-Watson Test two.sided  </code></pre>
+1      1.27 0.00200           0.345 Durbin-Watson Test two.sided  </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#and for future use, write the residuals out</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>model3_residuals <span class="ot">&lt;-</span> model3 <span class="sc">%&gt;%</span></span>
@@ -962,7 +962,7 @@ F-statistic: 65.68 on 3 and 62 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Rrunning a Moran’s I test on the residuals from the model suggested that there might be some spatial autocorreation occurring suggesting that places where the model over-predicted the percent of people smoking (those shown in blue in the map above with negative residuals) and under-predicted (those shown in red/orange) occasionally were near to each other.</p>
 <p>Ward and Gleditsch (2008) describe this situation (where the value of our <span class="math inline">\(y\)</span> dependent variable - percent people who smoke - may be influenced by neighbouring values) and suggest the way to deal with it is to incorporate a <em>spatially-lagged</em> version of this variable amongst the independent variables on the right-hand side of the equation. In this case, Equation 1 would be updated to look like this:</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + \rho w_i.y_i + \epsilon_i\]</span></p>
-<p>In this equation, <span class="math inline">\(w\)</span> is the spatial weights matrix you generated and <span class="math inline">\(w_i\)</span> is vector of all neighbouring areas (in our case, Wards) for any Ward <span class="math inline">\(y_i\)</span>.</p>
+<p>In this equation, <span class="math inline">\(w\)</span> is the spatial weights matrix you generated and <span class="math inline">\(w_i\)</span> is vector of all neighbouring areas (in our case, Wards) for any Ward <span class="math inline">\(y_i\)</span>. If using binary this will be a sum (e.g.&nbsp;the value of <span class="math inline">\(y\)</span> plotted against the sum of <span class="math inline">\(y\)</span> of the neighbouring wards). This may be explained as a weighted sum as the non-neighbours will be removed, the weight being the neighbours If this is row standardised it will be a weighted average of the neighbouring <span class="math inline">\(y\)</span> values. Typically we use a <strong>row standardised</strong> matrix.</p>
 <p>In this model, a positive value for the <span class="math inline">\(\rho w_i.y_i\)</span> parameter would indicate that the average value for the percent smoking is expected to be higher if, on average, neighbouring authorities also have a higher percentage of people who smoke.</p>
 <ul>
 <li><span class="math inline">\(\rho\)</span> denotes (represents) the spatial lag</li>
@@ -1066,10 +1066,10 @@ census_2018_total_personal_income_median_curp_15years_and_over -0.0003407798</co
 <p>Another way of coneptualising spatial dependence in regression models is not through values of the dependent variable in some areas affecting those in neighbouring areas (as they do in the spatial lag model), but in treating the spatial autocorrelation in the residuals as something that we need to deal with, perhaps reflecting some spatial autocorrelation amongst unobserved independent variables or some other mis-specification of the model.</p>
 <p>Ward and Gleditsch (2008) characterise this model as seeing spatial autocorrelation as a nuisance rather than being particularly informative, however it can still be handled within the model, albeit slightly differently.</p>
 <p>The spatial error model can be written:</p>
-<p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + \lambda w_i.\xi_i + \epsilon_i\]</span></p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + \lambda w_i\xi_i + \epsilon_i\]</span></p>
 <p>where</p>
 <ul>
-<li><p><span class="math inline">\(\xi_i\)</span> is the spatial component of the error terms…in other words the residuals of the values in surrounding spatial units based on the weight matrix.</p></li>
+<li><p><span class="math inline">\(\xi_i\)</span> is the spatial component of the error terms…in other words the residuals of the values in surrounding spatial units based on the weight matrix. The same rules apply as the lag (e.g.&nbsp;binary = sum, row standardisied = weighted average).</p></li>
 <li><p><span class="math inline">\(\lambda\)</span> is a measure of correlation between neighbouring residuals.. “it indicates the extent to which the spatial component of the errors <span class="math inline">\(\xi_i\)</span> are correlated with one another for nearby observations” as per the weight matrix, Ward and Gleditsch (2008). <strong>If there is no correlation between the then this defaults to normal OLS regression</strong></p></li>
 </ul>
 <p>For more detail on the spatial error model, see Ward and Gleditsch (2008) - https://methods.sagepub.com/Book/spatial-regression-models/n3.xml</p>
