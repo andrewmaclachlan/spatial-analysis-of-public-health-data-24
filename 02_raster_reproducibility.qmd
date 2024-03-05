@@ -222,7 +222,6 @@ malaria_nga <- malaria %>%
   terra::mask(., LGA)%>%
   terra::project(., "EPSG:26393")
 
-
 ```
 
 Now, let's re-project our vector data
@@ -263,6 +262,7 @@ head(LGA_pop_extract)
 Add a unique ID to our joined data (the polygons with the population) then left join again with our malaria counts per
 
 ```{r}
+# add row id to each row for join
 joined_data <- joined_data %>%
   mutate(id := seq_len(nrow(.)))
 
