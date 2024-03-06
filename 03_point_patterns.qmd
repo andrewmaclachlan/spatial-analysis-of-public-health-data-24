@@ -604,9 +604,9 @@ tm_shape(points_sf_joined) +
         title="Local Moran's I Z-score")
 ```
 
-### Getis Ord (G\_{i}\^{\*})
+### Getis Ord \(G_{i}^{*}\) 
 
-What about the Getis Ord (G\_{i}\^{\*})statistic for hot and cold spots...
+What about the Getis Ord \(G_{i}^{*}\) statistic for hot and cold spots...
 
 This is a very similar concept to Local Moran's I except it just returns a z-score...remember that a z-score shows **how many standard deviations a value (our value) is away (above or below) from the mean (of the expected values)**
 
