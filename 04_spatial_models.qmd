@@ -698,7 +698,9 @@ Comparing the results of the spatial error model with the spatially lagged model
 
 Note, here we can compare to OLS as there is no spatial lag.
 
-Both the $\lambda$ parameter in the spatial error model and the $\rho$ parameter in the spatially lagged model are larger than their standard errors, so we can conclude that spatial dependence should be borne in mind when interpreting the results of this regression model.
+The $\lambda$ parameter in the spatial error model is larger than the standard error and is significant, but the $\rho$ parameter is not larger than the standard error and is not significant.
+
+So we can conclude that spatial dependence *might* be borne in mind when interpreting the results of this regression model. This suggests to us that the smoking is not influenced by neighbouring polygons (or smokers) but the errors between the neighours are related and we may have some mis-specification of the model - e.g. a missing variable.
 
 ### Key advice
 

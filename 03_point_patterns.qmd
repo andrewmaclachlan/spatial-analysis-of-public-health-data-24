@@ -63,7 +63,7 @@ pharmacy <- st_read("prac3_data/PharmacyEW/PharmacyEW.shp")%>%
   #remove any duplicates
   distinct()
 #check CRS
-#st_crs(Pharmacy)
+st_crs(pharmacy)
 
 #check with a plot
 tm_shape(pharmacy) +
@@ -75,6 +75,10 @@ Get the London ward data and load it https://data.london.gov.uk/dataset/statisti
 ```{r, message=FALSE, warning=FALSE}
 wards<- st_read("prac3_data/statistical-gis-boundaries-london/statistical-gis-boundaries-london/ESRI/London_Ward_CityMerged.shp")%>%
   st_transform(.,27700)
+
+#check CRS
+#st_crs(wards)
+
 
 ```
 
